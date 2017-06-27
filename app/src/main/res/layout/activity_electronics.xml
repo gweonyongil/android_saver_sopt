@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sopt.saver.saver.Electronics.ElectronicsRecyclerViewActivity"
+    android:weightSum="1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1">
+
+        <ImageView
+            android:id="@+id/electronics_myinfo_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="전자제품" />
+
+        <ImageView
+            android:id="@+id/electronics_find_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true" />
+
+        <ImageView
+            android:id="@+id/electronics_write_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_toLeftOf="@id/electronics_find_img" />
+    </RelativeLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/RefreshLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.8">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/electronics_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/electronics_home_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp" />
+
+        <ImageView
+            android:id="@+id/electronics_category_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp" />
+
+        <ImageView
+            android:id="@+id/electronics_message_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp" />
+
+        <ImageView
+            android:id="@+id/electronics_mydeal_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp" />
+    </LinearLayout>
+</LinearLayout>

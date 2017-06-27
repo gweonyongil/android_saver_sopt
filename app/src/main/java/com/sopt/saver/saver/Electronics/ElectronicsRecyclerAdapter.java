@@ -22,6 +22,11 @@ public class ElectronicsRecyclerAdapter extends RecyclerView.Adapter<MyViewHolde
         this.clickListener = clickListener;
     }
 
+    public void setAdapter(ArrayList<Electronics_ItemData> electronics_itemDatas) {
+        this.electronics_itemDatas = electronics_itemDatas;
+        notifyDataSetChanged();
+    }
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.electronics_item_descrpition, parent, false);

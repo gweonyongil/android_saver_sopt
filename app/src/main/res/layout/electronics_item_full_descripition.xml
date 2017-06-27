@@ -108,13 +108,13 @@
                         android:id="@+id/electronics_full_item_image1"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_toLeftOf="@id/electronics_full_item_image1_text" />
+                        android:layout_toLeftOf="@+id/electronics_full_item_image1_text" />
 
                     <TextView
                         android:id="@+id/electronics_full_item_image1_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toLeftOf="@id/electronics_full_item_image2"
+                        android:layout_toLeftOf="@+id/electronics_full_item_image2"
                         android:text="text1" />
                 </LinearLayout>
 
@@ -128,7 +128,7 @@
                         android:id="@+id/electronics_full_item_image2"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_toLeftOf="@id/electronics_full_item_image2_text" />
+                        android:layout_toLeftOf="@+id/electronics_full_item_image2_text" />
                     <TextView
                         android:id="@+id/electronics_full_item_image2_text"
                         android:layout_width="wrap_content"

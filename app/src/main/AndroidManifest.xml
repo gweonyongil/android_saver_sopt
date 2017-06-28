@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Electronics.ElectronicsRecyclerViewActivity"
+            android:name=".Electronics.ERecyclerViewActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +25,9 @@
         <activity android:name=".SplashActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".Category.CategoryActivity"></activity>
+        <activity android:name=".Category.CategoryActivity" />
+        <activity android:name=".Electronics.ESellerRecyclerViewActivity" />
+        <activity android:name=".Mydeal.MydealRecyclerViewActivity"></activity>
     </application>
 
 </manifest>

@@ -1,8 +1,13 @@
 package com.sopt.saver.saver.Network;
 
-import com.sopt.saver.saver.Electronics.Electronics_ItemResult;
+import com.sopt.saver.saver.Electronics.EItemResult;
+import com.sopt.saver.saver.Electronics.EProductResult;
+import com.sopt.saver.saver.Electronics.ESellerResult;
+import com.sopt.saver.saver.Mydeal.Mydeal_ProductResult;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 
 /**
@@ -10,6 +15,16 @@ import retrofit2.http.GET;
  */
 
 public interface NetworkService {
-    @GET("/lists")
-    Call<Electronics_ItemResult> getElectronicsResult();
+    @GET("/eleclists")
+    Call<EItemResult> getElectronicsResult();
+
+    @GET("/eleclists/{id}")
+    Call<ESellerResult> getElectronicsSellerResult(@Path("id") String id);
+
+    @GET("/eleclists/{id}")
+    Call<EProductResult> getElectronicsProductResult(@Path("id") String id);
+
+    @GET("/eleclist/{id}")
+    Call<Mydeal_ProductResult> getMydealProductResult(@Path("id") String id);
+
 }

@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -34,6 +35,9 @@ public class MydealRecyclerViewActivity extends Activity implements SwipeRefresh
     NetworkService service;
     private String id;
 
+    private Button mywrite_btn;
+    private Button mycomment_btn;
+
     //Back 키 두번 클릭 여부 확인
     private final long FINSH_INTERVAL_TIME = 2000;
     private long backPressedTime = 0;
@@ -54,6 +58,8 @@ public class MydealRecyclerViewActivity extends Activity implements SwipeRefresh
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.RefreshLayout);
         recyclerView.setHasFixedSize(true);
         refreshLayout.setOnRefreshListener(this);
+        mywrite_btn = (Button)findViewById(R.id.m_mywrite_btn);
+        mycomment_btn = (Button)findViewById(R.id.m_mycomment_btn);
         ////////////////////////레이아웃 매니저 설정////////////////////////
         mLayoutManager = new LinearLayoutManager(this);
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -85,6 +91,19 @@ public class MydealRecyclerViewActivity extends Activity implements SwipeRefresh
             }
         });
         mydealImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        mywrite_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        mycomment_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

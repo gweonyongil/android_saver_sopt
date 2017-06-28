@@ -21,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayout.OnRefreshListener{
+public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayout.OnRefreshListener {
     private RecyclerView recyclerView;
     private ArrayList<EItemData> eDatas;
     private LinearLayoutManager mLayoutManager;
@@ -35,6 +35,9 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
     private SwipeRefreshLayout refreshLayout;
     private EItemData edata;
     NetworkService service;
+    //////intent 통해서 받아온 변수//////
+    String category;
+    String userid;
 
     //Back 키 두번 클릭 여부 확인
     private final long FINSH_INTERVAL_TIME = 2000;
@@ -48,12 +51,12 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
         ////////////////////////서비스 객체 초기화////////////////////////
         service = ApplicationController.getInstance().getNetworkService();
         ////////////////////////뷰 객체 초기화////////////////////////
-        writeImg = (ImageView) findViewById(    R.id.electronics_write_img);
-        findImg = (ImageView)findViewById(R.id.electronics_find_img);
-        homeImg = (ImageView)findViewById(R.id.electronics_home_img);
-        cateImg = (ImageView)findViewById(R.id.electronics_category_img);
-        messageImg = (ImageView)findViewById(R.id.electronics_message_img);
-        mydealImg = (ImageView)findViewById(R.id.electronics_message_img);
+        writeImg = (ImageView) findViewById(R.id.electronics_write_img);
+        findImg = (ImageView) findViewById(R.id.electronics_find_img);
+        homeImg = (ImageView) findViewById(R.id.electronics_home_img);
+        cateImg = (ImageView) findViewById(R.id.electronics_category_img);
+        messageImg = (ImageView) findViewById(R.id.electronics_message_img);
+        mydealImg = (ImageView) findViewById(R.id.electronics_message_img);
         recyclerView = (RecyclerView) findViewById(R.id.electronics_recycler_view);
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.RefreshLayout);
         recyclerView.setHasFixedSize(true);
@@ -116,7 +119,25 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
 
           통신부는 따로 정리해서 올려드리겠습니다!!
          */
-        Call<EItemResult> requestElectronicsData = service.getElectronicsResult();
+        category = getIntent().getExtras().getString("category");
+        userid = getIntent().getExtras().getString("userid");
+        Call<EItemResult> requestElectronicsData;
+        requestElectronicsData = service.getElectronicsResult();//Default
+        if (category.equals("img2")) {
+            requestElectronicsData = service.getElectronicsResult();
+        }
+        else if (category.equals("img3")) {
+            requestElectronicsData = service.getEBrandResult();
+        }
+        else if (category.equals("img4")) {
+            requestElectronicsData = service.getEUtilResult();
+        }
+        else if (category.equals("img5")) {
+            requestElectronicsData = service.getEEtcResult();
+        }
+        else{
+            requestElectronicsData = service.getESmartResult();
+        }
         requestElectronicsData.enqueue(new Callback<EItemResult>() {
             @Override
             public void onResponse(Call<EItemResult> call, Response<EItemResult> response) {
@@ -160,6 +181,7 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
     /*
     리스트를 갱신하는 메소드입니다.
      */
+
     public void ListReload() {
         Call<EItemResult> requestMainData = service.getElectronicsResult();
         requestMainData.enqueue(new Callback<EItemResult>() {
@@ -180,13 +202,15 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
             }
         });
     }
+
     ////////////////////////클릭 이벤트 정의////////////////////////
-    public View.OnClickListener clickEvent =    new View.OnClickListener() {
+    public View.OnClickListener clickEvent = new View.OnClickListener() {
         public void onClick(View v) {
             int itemPosition = recyclerView.getChildPosition(v);
             int tempId = eDatas.get(itemPosition).id;
             Intent intent = new Intent(getApplicationContext(), ESellerRecyclerViewActivity.class);
             intent.putExtra("id", String.valueOf(tempId));
+            intent.putExtra("userid", userid);
             startActivity(intent);
         }
     };

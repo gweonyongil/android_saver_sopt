@@ -17,10 +17,12 @@ import java.util.ArrayList;
 public class ESellerRecyclerAdapter extends RecyclerView.Adapter<ESellerDataViewHolder> {
     ArrayList<ESellerData> e_sellerDatas;
     View.OnClickListener clickListener;
+    View.OnClickListener open_btn_clickListener;
 
-    public ESellerRecyclerAdapter(ArrayList<ESellerData> e_sellerDatas, View.OnClickListener clickListener) {
+    public ESellerRecyclerAdapter(ArrayList<ESellerData> e_sellerDatas, View.OnClickListener clickListener, View.OnClickListener open_btn_clickListener) {
         this.e_sellerDatas = e_sellerDatas;
         this.clickListener = clickListener;
+        this.open_btn_clickListener = open_btn_clickListener;
     }
 
     public void setAdapter(ArrayList<ESellerData> e_sellerDatas) {
@@ -42,6 +44,7 @@ public class ESellerRecyclerAdapter extends RecyclerView.Adapter<ESellerDataView
         holder.e_seller_prodcut_tv.setText(e_sellerDatas.get(position).product);
         holder.e_seller_title_tv.setText(e_sellerDatas.get(position).title);
         holder.e_seller_price_tv.setText(e_sellerDatas.get(position).price);
+        holder.e_seller_open_btn.setOnClickListener(open_btn_clickListener);
     }
 
     @Override

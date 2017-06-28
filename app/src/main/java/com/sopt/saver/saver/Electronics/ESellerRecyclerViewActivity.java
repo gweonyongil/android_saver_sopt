@@ -1,6 +1,8 @@
 package com.sopt.saver.saver.Electronics;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -8,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ESellerRecyclerViewActivity extends Activity implements SwipeRefreshLayout.OnRefreshListener{
+public class ESellerRecyclerViewActivity extends Activity implements SwipeRefreshLayout.OnRefreshListener {
 
     private RecyclerView recyclerView;
     private ArrayList<ESellerData> eDatas;
@@ -42,6 +45,7 @@ public class ESellerRecyclerViewActivity extends Activity implements SwipeRefres
     private TextView product_tv6;
     private TextView product_tv7;
     private TextView product_tv8;
+    private Button product_answer_btn;
 
     private ImageView writeImg;
     private ImageView findImg;
@@ -51,7 +55,9 @@ public class ESellerRecyclerViewActivity extends Activity implements SwipeRefres
     private ImageView mydealImg;
     private SwipeRefreshLayout refreshLayout;
     NetworkService service;
+    //////////////intent 통해서 받은 변수/////////////
     String id;
+    String userid;
     //Back 키 두번 클릭 여부 확인
     private final long FINSH_INTERVAL_TIME = 2000;
     private long backPressedTime = 0;
@@ -64,26 +70,27 @@ public class ESellerRecyclerViewActivity extends Activity implements SwipeRefres
         ////////////////////////서비스 객체 초기화////////////////////////
         service = ApplicationController.getInstance().getNetworkService();
         ////////////////////////뷰 객체 초기화////////////////////////
-        product_user_id_tv = (TextView)findViewById(R.id.electronics_prodInfo_user_id_tv);
-        product_time_tv = (TextView)findViewById(R.id.electronics_prodInfo_time_text);
-        product_dday_tv = (TextView)findViewById(R.id.electronics_prodInfo_item_image1_text);
-        product_comment_num_tv = (TextView)findViewById(R.id.electronics_prodInfo_item_image2_text);
-        product_iv = (ImageView)findViewById(R.id.electronics_prodInfo_item_img);
-        product_tv1 = (TextView)findViewById(R.id.electronics_prodInfo_item_text1);
-        product_tv2 = (TextView)findViewById(R.id.electronics_prodInfo_item_text2);
-        product_tv3 = (TextView)findViewById(R.id.electronics_prodInfo_item_text3);
-        product_tv4 = (TextView)findViewById(R.id.electronics_prodInfo_item_text4);
-        product_tv5 = (TextView)findViewById(R.id.electronics_prodInfo_item_text5);
-        product_tv6 = (TextView)findViewById(R.id.electronics_prodInfo_item_text6);
-        product_tv7 = (TextView)findViewById(R.id.electronics_prodInfo_item_text7);
-        product_tv8 = (TextView)findViewById(R.id.electronics_prodInfo_item_text8);
+        product_user_id_tv = (TextView) findViewById(R.id.electronics_prodInfo_user_id_tv);
+        product_time_tv = (TextView) findViewById(R.id.electronics_prodInfo_time_text);
+        product_dday_tv = (TextView) findViewById(R.id.electronics_prodInfo_item_image1_text);
+        product_comment_num_tv = (TextView) findViewById(R.id.electronics_prodInfo_item_image2_text);
+        product_iv = (ImageView) findViewById(R.id.electronics_prodInfo_item_img);
+        product_tv1 = (TextView) findViewById(R.id.electronics_prodInfo_item_text1);
+        product_tv2 = (TextView) findViewById(R.id.electronics_prodInfo_item_text2);
+        product_tv3 = (TextView) findViewById(R.id.electronics_prodInfo_item_text3);
+        product_tv4 = (TextView) findViewById(R.id.electronics_prodInfo_item_text4);
+        product_tv5 = (TextView) findViewById(R.id.electronics_prodInfo_item_text5);
+        product_tv6 = (TextView) findViewById(R.id.electronics_prodInfo_item_text6);
+        product_tv7 = (TextView) findViewById(R.id.electronics_prodInfo_item_text7);
+        product_tv8 = (TextView) findViewById(R.id.electronics_prodInfo_item_text8);
+        product_answer_btn = (Button) findViewById(R.id.electronics_answer_btn);
 
         writeImg = (ImageView) findViewById(R.id.electronics_write_img);
-        findImg = (ImageView)findViewById(R.id.electronics_find_img);
-        homeImg = (ImageView)findViewById(R.id.electronics_home_img);
-        cateImg = (ImageView)findViewById(R.id.electronics_category_img);
-        messageImg = (ImageView)findViewById(R.id.electronics_message_img);
-        mydealImg = (ImageView)findViewById(R.id.electronics_message_img);
+        findImg = (ImageView) findViewById(R.id.electronics_find_img);
+        homeImg = (ImageView) findViewById(R.id.electronics_home_img);
+        cateImg = (ImageView) findViewById(R.id.electronics_category_img);
+        messageImg = (ImageView) findViewById(R.id.electronics_message_img);
+        mydealImg = (ImageView) findViewById(R.id.electronics_message_img);
         recyclerView = (RecyclerView) findViewById(R.id.electronics_recycler_view);
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.RefreshLayout);
         recyclerView.setHasFixedSize(true);
@@ -95,12 +102,13 @@ public class ESellerRecyclerViewActivity extends Activity implements SwipeRefres
         ////////////////////////각 배열에 모델 개체를 가지는 ArrayList 초기화////////////////////////
         eDatas = new ArrayList<ESellerData>();
         ////////////////////////리사이클러 뷰와 어뎁터 연동////////////////////////
-
         //아이디값 전달받기
         Intent intent = getIntent();
         id = intent.getExtras().getString("id");
+        userid = intent.getExtras().getString("userid");
         ////////////////////////파라미터로 위의 ArrayList와 클릭이벤트////////////////////////
-        adapter = new ESellerRecyclerAdapter(eDatas, clickEvent);
+
+        adapter = new ESellerRecyclerAdapter(eDatas, clickEvent, open_btn_clickEvent);
         recyclerView.setAdapter(adapter);
         ////////////////////////리스트 목록 추가 버튼에 리스너 설정////////////////////////
 
@@ -190,6 +198,7 @@ public class ESellerRecyclerViewActivity extends Activity implements SwipeRefres
                     }
                 }
             }
+
             @Override
             public void onFailure(Call<EProductResult> call, Throwable t) {
                 Log.i("fail", t.getMessage());
@@ -242,14 +251,85 @@ public class ESellerRecyclerViewActivity extends Activity implements SwipeRefres
             }
         });
     }
+
     ////////////////////////클릭 이벤트 정의////////////////////////
-    public View.OnClickListener clickEvent =    new View.OnClickListener() {
+    public View.OnClickListener clickEvent = new View.OnClickListener() {
         public void onClick(View v) {
             int itemPosition = recyclerView.getChildPosition(v);
             int tempId = eDatas.get(itemPosition).id;
+            //열람하기(자기 자신, 자기가 아닐 때)
+
             //Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
             //intent.putExtra("id", String.valueOf(tempId));
             //startActivity(intent);
         }
     };
+    public View.OnClickListener open_btn_clickEvent = new View.OnClickListener() {
+        public void onClick(View v) {
+            int itemPosition = recyclerView.getChildPosition(v);
+            int tempId = eDatas.get(itemPosition).id;
+            //열람하기(자기 자신, 자기가 아닐 때) 다이어로그 1, 다이어로그 2
+            Call<UserCheckResult> requestUserCheck = service.getUserCheck(userid);
+            requestUserCheck.enqueue(new Callback<UserCheckResult>() {
+                @Override
+                public void onResponse(Call<UserCheckResult> call, Response<UserCheckResult> response) {
+                    if (response.isSuccessful()) {
+                        if (response.body().message.equals("ok")) {
+                            CheckOkDialog okdialog = new CheckOkDialog();
+                            okdialog.show();
+                        } else {
+                            CheckFailDialog faildialog = new CheckFailDialog();
+                            faildialog.show();
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<UserCheckResult> call, Throwable t) {
+
+                }
+            });
+        }
+    };
+
+    public class CheckOkDialog extends Dialog implements DialogInterface.OnClickListener {
+        Button okButton;
+        Button cancelButton;
+
+        public CheckOkDialog() {
+            super(ESellerRecyclerViewActivity.this);
+            setContentView(R.layout.dialog_checkok);
+            okButton = (Button) findViewById(R.id.dialog_checkok_ok_btn);
+            cancelButton = (Button) findViewById(R.id.dialog_checkok_cancel_btn);
+        }
+
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            if (which == 1) {
+
+            } else {
+
+            }
+        }
+    }
+    public class CheckFailDialog extends Dialog implements DialogInterface.OnClickListener {
+        Button okButton;
+        Button cancelButton;
+
+        public CheckFailDialog() {
+            super(ESellerRecyclerViewActivity.this);
+            setContentView(R.layout.dialog_checkfail);
+            okButton = (Button) findViewById(R.id.dialog_checkfail_ok_btn);
+            cancelButton = (Button) findViewById(R.id.dialog_checkfail_cancel_btn);
+        }
+
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            if (which == 1) {
+
+            } else {
+
+            }
+        }
+    }
 }

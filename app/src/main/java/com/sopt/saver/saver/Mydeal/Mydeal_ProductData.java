@@ -12,4 +12,14 @@ public class Mydeal_ProductData {
     String dday;
     String image;
     String comcount;
+    //////////TEST CONSTRUCTOR//////////
+    public Mydeal_ProductData()
+    {
+        product = "test";
+        price = "test";
+        time = "test";
+        dday = "test";
+        image = "test";
+        comcount= "test";
+    }
 }

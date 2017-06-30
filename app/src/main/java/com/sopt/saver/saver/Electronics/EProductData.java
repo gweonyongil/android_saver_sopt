@@ -19,4 +19,19 @@ public class EProductData {
     String dday;
     String image;
     String comcount;
+    public EProductData(){
+        userid = "test";
+        title = "test";
+        category = "test";
+        kind = "test";
+        product = "test";
+        price = "test";
+        url = "test";
+        explantion = "test";
+        addInformation = "test";
+        time = "test";
+        dday = "test";
+        image = "test";
+        comcount = "test";
+    }
 }

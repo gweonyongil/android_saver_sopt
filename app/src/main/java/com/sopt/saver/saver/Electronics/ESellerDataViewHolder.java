@@ -26,7 +26,7 @@ public class ESellerDataViewHolder extends RecyclerView.ViewHolder {
         e_seller_user_id_tv = (TextView) itemView.findViewById(R.id.electronics_seller_user_id_text);
         e_seller_title_tv = (TextView) itemView.findViewById(R.id.electronics_seller_item_text1);
         e_seller_prodcut_tv = (TextView) itemView.findViewById(R.id.electronics_seller_item_text2);
-        e_seller_price_tv = (TextView) itemView.findViewById(R.id.electronics_prodInfo_item_text3);
+        e_seller_price_tv = (TextView) itemView.findViewById(R.id.electronics_seller_item_text3);
         e_seller_open_btn = (Button) itemView.findViewById(R.id.electronics_seller_open_btn);
     }
 }

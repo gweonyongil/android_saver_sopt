@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/electronics_prodInfo_user_id_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="아이디" />
+
+        <ImageView
+            android:id="@+id/electronics_prodInfo_item_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+        <Button
+            android:id="@+id/electronics_prodInfo_picture_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="사진보기" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/electronics_prodInfo_item_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="텍스트1" />
+
+            <TextView
+                android:id="@+id/electronics_prodInfo_time_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="Time" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/electronics_prodInfo_item_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="텍스트2" />
+
+        <TextView
+            android:id="@+id/electronics_prodInfo_item_text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="텍스트3" />
+
+        <TextView
+            android:id="@+id/electronics_prodInfo_item_text4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="텍스트4" />
+
+        <TextView
+            android:id="@+id/electronics_prodInfo_item_text5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="텍스트5" />
+
+        <TextView
+            android:id="@+id/electronics_prodInfo_item_text6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="텍스트6" />
+
+        <TextView
+            android:id="@+id/electronics_prodInfo_item_text7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="텍스트7" />
+
+        <TextView
+            android:id="@+id/electronics_prodInfo_item_text8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="텍스트8" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/prodInfo_able_time_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/electronics_prodInfo_item_image1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/electronics_prodInfo_item_image1_text" />
+
+                <TextView
+                    android:id="@+id/electronics_prodInfo_item_image1_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/electronics_prodInfo_item_image2"
+                    android:text="text1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/prodInfo_able_time_layout"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/electronics_prodInfo_item_image2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/electronics_prodInfo_item_image2_text" />
+
+                <TextView
+                    android:id="@+id/electronics_prodInfo_item_image2_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="text2" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/electronics_prodInfo_answer_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="59dp"
+                android:layout_marginRight="59dp"
+                android:layout_toLeftOf="@+id/prodInfo_able_time_layout"
+                android:layout_toStartOf="@+id/prodInfo_able_time_layout"
+                android:text="답변하기" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -7,6 +7,6 @@ import java.util.ArrayList;
  */
 
 public class ESellerResult {
-    ArrayList<ESellerData> result;
-    String message;
+    public ArrayList<ESellerData> result;
+    public String message;
 }

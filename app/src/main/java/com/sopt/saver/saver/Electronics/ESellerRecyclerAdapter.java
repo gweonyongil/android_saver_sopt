@@ -19,6 +19,7 @@ public class ESellerRecyclerAdapter extends RecyclerView.Adapter<ESellerDataView
     View.OnClickListener clickListener;
     View.OnClickListener open_btn_clickListener;
 
+
     public ESellerRecyclerAdapter(ArrayList<ESellerData> e_sellerDatas, View.OnClickListener clickListener, View.OnClickListener open_btn_clickListener) {
         this.e_sellerDatas = e_sellerDatas;
         this.clickListener = clickListener;
@@ -29,23 +30,25 @@ public class ESellerRecyclerAdapter extends RecyclerView.Adapter<ESellerDataView
         this.e_sellerDatas = e_sellerDatas;
         notifyDataSetChanged();
     }
+
     @Override
     public ESellerDataViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.electronics_item_seller_description , parent, false);
-        view.setOnClickListener(clickListener);//클릭 시 텍스트 뷰 Visible 속성
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.electronics_item_seller_description, parent, false);
+        view.setOnClickListener(clickListener);
         ESellerDataViewHolder ESellerDataViewHolder = new ESellerDataViewHolder(view);
         return ESellerDataViewHolder;
     }
 
     @Override
     public void onBindViewHolder(ESellerDataViewHolder holder, int position) {
-        new ImageLoadTask(e_sellerDatas.get(position).image, holder.e_seller_user_img).execute();
-        holder.e_seller_user_id_tv.setText(e_sellerDatas.get(position).userid);
-        holder.e_seller_prodcut_tv.setText(e_sellerDatas.get(position).product);
-        holder.e_seller_title_tv.setText(e_sellerDatas.get(position).title);
-        holder.e_seller_price_tv.setText(e_sellerDatas.get(position).price);
-        holder.e_seller_open_btn.setOnClickListener(open_btn_clickListener);
+        new ImageLoadTask(e_sellerDatas.get(position).image, ((ESellerDataViewHolder) holder).e_seller_user_img).execute();
+        ((ESellerDataViewHolder) holder).e_seller_user_id_tv.setText(e_sellerDatas.get(position).userid);
+        ((ESellerDataViewHolder) holder).e_seller_prodcut_tv.setText(e_sellerDatas.get(position).product);
+        ((ESellerDataViewHolder) holder).e_seller_title_tv.setText(e_sellerDatas.get(position).title);
+        ((ESellerDataViewHolder) holder).e_seller_price_tv.setText(e_sellerDatas.get(position).price);
+        ((ESellerDataViewHolder) holder).e_seller_open_btn.setOnClickListener(open_btn_clickListener);
     }
+
 
     @Override
     public int getItemCount() {

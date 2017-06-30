@@ -1,0 +1,237 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:background="@drawable/login_bg"
+    tools:context="com.sopt.saver.saver.FirstFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/singup_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="9dp"
+            android:src="@drawable/main_logo"></ImageView>
+
+        <TextView
+            android:id="@+id/signup_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/singup_logo"
+            android:layout_marginTop="9dp"
+            android:text="회원가입"
+            android:textColor="#ffffff"></TextView>
+
+        <TextView
+            android:id="@+id/id_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="36dp"
+            android:layout_below="@id/signup_text"
+            android:layout_marginTop="36dp"
+            android:text="아이디(메일)"
+            android:textColor="#ffffff"/>
+
+        <EditText
+            android:id="@+id/id_edit"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:layout_alignBottom="@+id/id_title"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="36dp" />
+
+        <TextView
+            android:id="@+id/pw_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id_title"
+            android:layout_marginTop="24dp"
+            android:layout_alignLeft="@id/id_title"
+            android:text="비밀번호"
+            android:textColor="#ffffff"/>
+
+        <EditText
+            android:id="@+id/pw_edit"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/id_title"
+            android:layout_alignBottom="@id/pw_title"
+            android:layout_alignLeft="@id/id_edit"
+            android:layout_alignRight="@id/id_edit"
+            android:singleLine="true"
+            android:inputType="numberPassword"/>
+
+        <TextView
+            android:id="@+id/pw_check_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pw_title"
+            android:layout_marginTop="24dp"
+            android:layout_alignLeft="@id/id_title"
+            android:text="비밀번호 확인"
+            android:textColor="#ffffff"/>
+
+        <EditText
+            android:id="@+id/pw_check_edit"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/id_title"
+            android:layout_alignBottom="@id/pw_check_title"
+            android:layout_alignLeft="@id/id_edit"
+            android:layout_alignRight="@id/id_edit"
+            android:singleLine="true"
+            android:inputType="numberPassword"/>
+
+        <TextView
+            android:id="@+id/name_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pw_check_title"
+            android:layout_marginTop="24dp"
+            android:layout_alignLeft="@id/id_title"
+            android:text="이름"
+            android:textColor="#ffffff"/>
+
+        <EditText
+            android:id="@+id/name_edit"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/id_title"
+            android:layout_alignBottom="@id/name_title"
+            android:layout_alignLeft="@id/id_edit"
+            android:layout_alignRight="@id/id_edit" />
+
+        <TextView
+        android:id="@+id/phone_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name_title"
+        android:layout_marginTop="24dp"
+        android:layout_alignLeft="@id/id_title"
+        android:text="핸드폰 번호"
+        android:textColor="#ffffff"/>
+
+        <EditText
+            android:id="@+id/phone_edit"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/id_title"
+            android:layout_alignBottom="@id/phone_title"
+            android:layout_alignLeft="@id/id_edit"
+            android:layout_alignRight="@id/id_edit"
+            android:hint="예시)01057773311"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:id="@+id/bank_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/phone_title"
+            android:layout_marginTop="24dp"
+            android:layout_alignLeft="@id/id_title"
+            android:text="은행"
+            android:textColor="#ffffff"/>
+
+        <Spinner
+            android:id="@+id/bank_edit"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/id_title"
+            android:layout_alignBottom="@id/bank_title"
+            android:layout_alignLeft="@id/id_edit"
+            android:layout_alignRight="@id/id_edit" />
+
+        <TextView
+            android:id="@+id/account_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bank_title"
+            android:layout_marginTop="24dp"
+            android:layout_alignLeft="@id/id_title"
+            android:text="계좌번호"
+            android:textColor="#ffffff"/>
+
+        <EditText
+            android:id="@+id/account_edit"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/id_title"
+            android:layout_alignBottom="@id/account_title"
+            android:layout_alignLeft="@id/id_edit"
+            android:layout_alignRight="@id/id_edit" />
+
+        <TextView
+            android:id="@+id/birth_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/account_title"
+            android:layout_marginTop="24dp"
+            android:layout_alignLeft="@id/id_title"
+            android:text="생년월일"
+            android:textColor="#ffffff"/>
+
+        <EditText
+            android:id="@+id/birth_edit"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/id_title"
+            android:layout_alignBottom="@id/birth_title"
+            android:layout_alignLeft="@id/id_edit"
+            android:layout_alignRight="@id/id_edit"
+            android:hint="예시)19950313"
+            android:textColor="#ffffff"/>
+
+        <RadioGroup
+            android:id="@+id/part_Radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/birth_title"
+            android:layout_marginTop="27dp"
+            android:layout_alignLeft="@id/id_title">
+
+            <CheckBox
+                android:id="@+id/sms_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SMS 수신에 동의합니다 (선택)"
+                android:textColor="#ffffff" />
+
+            <CheckBox
+                android:id="@+id/email_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Email 수신에 동의합니다 (선택)"
+                android:textColor="#ffffff" />
+
+            <CheckBox
+                android:id="@+id/use_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="이용약관에 동의합니다."
+                android:textColor="#ffffff" />
+
+            <CheckBox
+                android:id="@+id/personal_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="개인정보 취급방침에 동의합니다"
+                android:textColor="#ffffff" />
+        </RadioGroup>
+
+
+    </RelativeLayout>
+
+</FrameLayout>

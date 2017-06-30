@@ -11,4 +11,11 @@ public class ESellerData {
     String product;
     String price;
     String image;
+    public ESellerData(){
+        userid = "test";
+        title = "test";
+        product = "test";
+        price = "test";
+        image = "test";
+    }
 }

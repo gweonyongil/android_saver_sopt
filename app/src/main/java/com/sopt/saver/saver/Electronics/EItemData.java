@@ -12,4 +12,13 @@ public class EItemData {
     String dday;
     String image;
     String comcount;
+    public EItemData()
+    {
+        product = "test";
+        price = "test";
+        time = "test";
+        image = "test";
+        dday = "test";
+        comcount = "test";
+    }
 }

@@ -1,16 +1,23 @@
 package com.sopt.saver.saver.Category;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.sopt.saver.saver.Electronics.ERecyclerViewActivity;
+import com.sopt.saver.saver.MainPage.MainActivity;
+import com.sopt.saver.saver.Message.MessageActivity;
+import com.sopt.saver.saver.Mydeal.MydealRecyclerViewActivity;
+import com.sopt.saver.saver.Mypage.MypageActivity;
 import com.sopt.saver.saver.R;
 
-public class CategoryActivity extends Activity {
+public class CategoryActivity extends AppCompatActivity {
+    private EditText search_et;
+    private ImageView mypage_img;
     private ImageView find_img;
     private ImageView home_img;
     private ImageView category_img;
@@ -29,6 +36,8 @@ public class CategoryActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
+        search_et = (EditText)findViewById(R.id.category_search_et);
+        mypage_img = (ImageView)findViewById(R.id.category_mypage_img);
         find_img = (ImageView)findViewById(R.id.category_find_img);
         home_img = (ImageView)findViewById(R.id.category_home_img);
         category_img = (ImageView)findViewById(R.id.category_category_img);
@@ -41,20 +50,32 @@ public class CategoryActivity extends Activity {
         img5 = (ImageView)findViewById(R.id.cate_img5);
         img6 = (ImageView)findViewById(R.id.cate_img6);
         ///////////////userid 서버 통신시 필요/////////////
-        userid = getIntent().getExtras().getString("userid");
+        //userid = getIntent().getExtras().getString("userid");
         intent = new Intent(CategoryActivity.this, ERecyclerViewActivity.class);
+        ////////TEST////////////
+        userid = "userid";
         intent.putExtra("userid", userid.toString());
-
+        mypage_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mypage_intent = new Intent(CategoryActivity.this, MypageActivity.class);
+                mypage_intent.putExtra("userid", userid.toString());
+                startActivity(mypage_intent);
+            }
+        });
         find_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String find = search_et.getText().toString();
 
             }
         });
         home_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent home_intent = new Intent(CategoryActivity.this, MainActivity.class);
+                home_intent.putExtra("userid", userid.toString());
+                startActivity(home_intent);
             }
         });
         category_img.setOnClickListener(new View.OnClickListener() {
@@ -66,13 +87,18 @@ public class CategoryActivity extends Activity {
         message_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent message_intent = new Intent(CategoryActivity.this, MessageActivity.class);
+                message_intent.putExtra("userid", userid.toString());
+                startActivity(message_intent);
             }
         });
         mydeal_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(CategoryActivity.this, MydealRecyclerViewActivity.class);
+                ///////////////////////TEST 삽입//////////////////////////////
+                intent.putExtra("userid", userid.toString());
+                startActivity(intent);
             }
         });
         img1.setOnClickListener(new View.OnClickListener() {

@@ -1,8 +1,9 @@
 package com.sopt.saver.saver.Mydeal;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,6 +12,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.sopt.saver.saver.Category.CategoryActivity;
+import com.sopt.saver.saver.Electronics.ESellerRecyclerViewActivity;
+import com.sopt.saver.saver.MainPage.MainActivity;
 import com.sopt.saver.saver.Network.NetworkService;
 import com.sopt.saver.saver.R;
 import com.sopt.saver.saver.application.ApplicationController;
@@ -21,7 +25,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MydealRecyclerViewActivity extends Activity implements SwipeRefreshLayout.OnRefreshListener{
+public class MydealRecyclerViewActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
     private RecyclerView recyclerView;
     private ArrayList<Mydeal_ProductData> mDatas;
     private LinearLayoutManager mLayoutManager;
@@ -33,11 +37,10 @@ public class MydealRecyclerViewActivity extends Activity implements SwipeRefresh
     private SwipeRefreshLayout refreshLayout;
     private Mydeal_ProductData mdata;
     NetworkService service;
-    private String id;
+    private String userid;
 
     private Button mywrite_btn;
     private Button mycomment_btn;
-
     //Back 키 두번 클릭 여부 확인
     private final long FINSH_INTERVAL_TIME = 2000;
     private long backPressedTime = 0;
@@ -50,22 +53,33 @@ public class MydealRecyclerViewActivity extends Activity implements SwipeRefresh
         ////////////////////////서비스 객체 초기화////////////////////////
         service = ApplicationController.getInstance().getNetworkService();
         ////////////////////////뷰 객체 초기화////////////////////////
-        homeImg = (ImageView)findViewById(R.id.mydeal_home_img);
-        cateImg = (ImageView)findViewById(R.id.mydeal_category_img);
-        messageImg = (ImageView)findViewById(R.id.mydeal_message_img);
-        mydealImg = (ImageView)findViewById(R.id.mydeal_mydeal_img);
+        homeImg = (ImageView) findViewById(R.id.mydeal_home_img);
+        cateImg = (ImageView) findViewById(R.id.mydeal_category_img);
+        messageImg = (ImageView) findViewById(R.id.mydeal_message_img);
+        mydealImg = (ImageView) findViewById(R.id.mydeal_mydeal_img);
         recyclerView = (RecyclerView) findViewById(R.id.mydeal_recycler_view);
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.RefreshLayout);
         recyclerView.setHasFixedSize(true);
         refreshLayout.setOnRefreshListener(this);
-        mywrite_btn = (Button)findViewById(R.id.m_mywrite_btn);
-        mycomment_btn = (Button)findViewById(R.id.m_mycomment_btn);
+        mywrite_btn = (Button) findViewById(R.id.m_mywrite_btn);
+        mycomment_btn = (Button) findViewById(R.id.m_mycomment_btn);
         ////////////////////////레이아웃 매니저 설정////////////////////////
         mLayoutManager = new LinearLayoutManager(this);
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLayoutManager);
         ////////////////////////각 배열에 모델 개체를 가지는 ArrayList 초기화////////////////////////
         mDatas = new ArrayList<Mydeal_ProductData>();
+        //////////////////////////////TEST//////////////////////////
+        mDatas.add(new Mydeal_ProductData());
+        mDatas.add(new Mydeal_ProductData());
+        mDatas.add(new Mydeal_ProductData());
+        mDatas.add(new Mydeal_ProductData());
+        mDatas.add(new Mydeal_ProductData());
+        mDatas.add(new Mydeal_ProductData());
+        mDatas.add(new Mydeal_ProductData());
+        mDatas.add(new Mydeal_ProductData());
+        ///////////////////////////intent check//////////////////////////
+        userid = getIntent().getExtras().getString("userid");
         ////////////////////////리사이클러 뷰와 어뎁터 연동////////////////////////
 
         ////////////////////////파라미터로 위의 ArrayList와 클릭이벤트////////////////////////
@@ -74,20 +88,26 @@ public class MydealRecyclerViewActivity extends Activity implements SwipeRefresh
         ////////////////////////리스트 목록 추가 버튼에 리스너 설정////////////////////////
         homeImg.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View v){
+                Intent home_intent = new Intent(MydealRecyclerViewActivity.this, MainActivity.class);
+                home_intent.putExtra("userid", userid);
+                startActivity(home_intent);
             }
         });
         cateImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent category_intent = new Intent(MydealRecyclerViewActivity.this, CategoryActivity.class);
+                category_intent.putExtra("userid", userid);
+                startActivity(category_intent);
             }
         });
         messageImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent message_intent = new Intent(MydealRecyclerViewActivity.this, CategoryActivity.class);
+                message_intent.putExtra("userid", userid);
+                startActivity(message_intent);
             }
         });
         mydealImg.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +137,7 @@ public class MydealRecyclerViewActivity extends Activity implements SwipeRefresh
 
           통신부는 따로 정리해서 올려드리겠습니다!!
          */
-        Call<Mydeal_ProductResult> requestElectronicsData = service.getMydealProductResult(id);
+        Call<Mydeal_ProductResult> requestElectronicsData = service.getMydealProductResult(userid);
         requestElectronicsData.enqueue(new Callback<Mydeal_ProductResult>() {
             @Override
             public void onResponse(Call<Mydeal_ProductResult> call, Response<Mydeal_ProductResult> response) {
@@ -162,7 +182,7 @@ public class MydealRecyclerViewActivity extends Activity implements SwipeRefresh
     리스트를 갱신하는 메소드입니다.
      */
     public void ListReload() {
-        Call<Mydeal_ProductResult> requestMainData = service.getMydealProductResult(id);
+        Call<Mydeal_ProductResult> requestMainData = service.getMydealProductResult(userid);
         requestMainData.enqueue(new Callback<Mydeal_ProductResult>() {
             @Override
             public void onResponse(Call<Mydeal_ProductResult> call, Response<Mydeal_ProductResult> response) {
@@ -180,14 +200,15 @@ public class MydealRecyclerViewActivity extends Activity implements SwipeRefresh
             }
         });
     }
+
     ////////////////////////클릭 이벤트 정의////////////////////////
-    public View.OnClickListener clickEvent =    new View.OnClickListener() {
+    public View.OnClickListener clickEvent = new View.OnClickListener() {
         public void onClick(View v) {
             int itemPosition = recyclerView.getChildPosition(v);
             int tempId = mDatas.get(itemPosition).id;
-            //Intent intent = new Intent(getApplicationContext(), ESellerRecyclerViewActivity.class);
-            //intent.putExtra("id", String.valueOf(tempId));
-            //startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), ESellerRecyclerViewActivity.class);
+            intent.putExtra("id", String.valueOf(tempId));
+            startActivity(intent);
         }
     };
 }

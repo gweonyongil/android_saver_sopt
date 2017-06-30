@@ -26,12 +26,9 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
     private ArrayList<EItemData> eDatas;
     private LinearLayoutManager mLayoutManager;
     private ERecyclerAdapter adapter;
+    private ImageView backImg;
     private ImageView writeImg;
     private ImageView findImg;
-    private ImageView homeImg;
-    private ImageView cateImg;
-    private ImageView messageImg;
-    private ImageView mydealImg;
     private SwipeRefreshLayout refreshLayout;
     private EItemData edata;
     NetworkService service;
@@ -51,12 +48,9 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
         ////////////////////////서비스 객체 초기화////////////////////////
         service = ApplicationController.getInstance().getNetworkService();
         ////////////////////////뷰 객체 초기화////////////////////////
+        backImg = (ImageView)findViewById(R.id.electronics_back_img);
         writeImg = (ImageView) findViewById(R.id.electronics_write_img);
         findImg = (ImageView) findViewById(R.id.electronics_find_img);
-        homeImg = (ImageView) findViewById(R.id.electronics_home_img);
-        cateImg = (ImageView) findViewById(R.id.electronics_category_img);
-        messageImg = (ImageView) findViewById(R.id.electronics_message_img);
-        mydealImg = (ImageView) findViewById(R.id.electronics_message_img);
         recyclerView = (RecyclerView) findViewById(R.id.electronics_recycler_view);
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.RefreshLayout);
         recyclerView.setHasFixedSize(true);
@@ -67,13 +61,24 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
         recyclerView.setLayoutManager(mLayoutManager);
         ////////////////////////각 배열에 모델 개체를 가지는 ArrayList 초기화////////////////////////
         eDatas = new ArrayList<EItemData>();
+        //////////////////////TEST DISPLAY//////////////////////
+        eDatas.add(new EItemData());
+        eDatas.add(new EItemData());
+        eDatas.add(new EItemData());
+        eDatas.add(new EItemData());
+        eDatas.add(new EItemData());
         ////////////////////////리사이클러 뷰와 어뎁터 연동////////////////////////
 
         ////////////////////////파라미터로 위의 ArrayList와 클릭이벤트////////////////////////
         adapter = new ERecyclerAdapter(eDatas, clickEvent);
         recyclerView.setAdapter(adapter);
         ////////////////////////리스트 목록 추가 버튼에 리스너 설정////////////////////////
-
+        backImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         writeImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,30 +87,6 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
             }
         });
         findImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        homeImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        cateImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        messageImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        mydealImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

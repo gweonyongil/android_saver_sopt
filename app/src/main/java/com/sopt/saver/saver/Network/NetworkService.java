@@ -1,17 +1,22 @@
 package com.sopt.saver.saver.Network;
 
+import com.sopt.saver.saver.Answer.AnswerInfo;
+import com.sopt.saver.saver.Answer.AnswerResult;
 import com.sopt.saver.saver.Electronics.EItemResult;
 import com.sopt.saver.saver.Electronics.EProductResult;
 import com.sopt.saver.saver.Electronics.ESellerResult;
 import com.sopt.saver.saver.Electronics.UserCheckResult;
+import com.sopt.saver.saver.Login.LoginInfo;
 import com.sopt.saver.saver.Login.LoginResult;
 import com.sopt.saver.saver.Mydeal.Mydeal_ProductResult;
+import com.sopt.saver.saver.Mypage.MyPageResult;
+import com.sopt.saver.saver.Sign.SignInfo;
+import com.sopt.saver.saver.Sign.SignResult;
 
-import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 
@@ -23,13 +28,18 @@ public interface NetworkService {
 
     ////////////로그인///////////////////////
     @POST("/login")
-    Call<LoginResult> tryLogin(@Part("id") RequestBody id, @Part("password")RequestBody password);
+    Call<LoginResult> tryLogin(@Body LoginInfo loginInfo);
     //////////특정 사용자 권한확인////////////
     @GET("/eleclists/{id}")
     Call<UserCheckResult> getUserCheck(@Path("id") String id);
-    ///////////회원가입//////////////////////
+    ///////////////////마이페이지////////////////
+    @GET("/mypage/{id}")
+    Call<MyPageResult> getMyPageInfo(@Path("id") String id);
+    ///////////////////메인화면///////////////////
 
-    /////////////////////////////////////////
+    ////////////////////회원가입//////////////////
+    @POST("/register")
+    Call<SignResult> registerSignInfo(@Body SignInfo signInfo);
     /////////전체 게시글 조회////////////////
     @GET("/eleclists")
     Call<EItemResult> getElectronicsResult();
@@ -79,4 +89,10 @@ public interface NetworkService {
     /////////////////////////나의거래////////////////////////////////////////////
     @GET("/eleclist/{id}")
     Call<Mydeal_ProductResult> getMydealProductResult(@Path("id") String id);
+    ////////////////////////답변하기//////////////////////////////////////////////
+    @POST("/eleclists/{id}")
+    Call<AnswerResult> postAnswerInfo(@Path("id") String id, @Body AnswerInfo answerInfo);
+    /////////////////////////////문의하기/////////////////////////////////////////
+    ///////////////////////////메시지////////////////////////////////////////////
+    ///////////////////////////상세정보/////////////////////////////////////////3
 }

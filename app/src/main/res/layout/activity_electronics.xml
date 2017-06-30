@@ -26,6 +26,7 @@
             android:src="@drawable/message2_back" />
 
         <EditText
+            android:id="@+id/ER_search_et"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_centerHorizontal="true"

@@ -25,8 +25,6 @@ public class LoginActivity extends Activity {
     private Button login_btn;
     private TextView signup_btn;
     private EditText login_id_edit, login_pw_edit;
-    private final String id = "id";
-    private final String pwd = "password";
     private NetworkService service;
 
     @Override
@@ -58,7 +56,6 @@ public class LoginActivity extends Activity {
                 String id = login_id_edit.getText().toString();
                 String password = login_pw_edit.getText().toString();
                 LoginInfo loginInfo = new LoginInfo(id, password);
-//                Call<LoginResult> requestLogin = service.tryLogin(id, password);
                 Call<LoginResult> requestLogin = service.tryLogin(loginInfo);
                 requestLogin.enqueue(new Callback<LoginResult>() {
                     @Override

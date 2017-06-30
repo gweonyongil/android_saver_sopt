@@ -1,86 +1,171 @@
 package com.sopt.saver.saver.Sign;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.ImageView;
+import android.widget.NumberPicker;
+import android.widget.Toast;
 
+import com.sopt.saver.saver.Login.LoginActivity;
+import com.sopt.saver.saver.Network.NetworkService;
 import com.sopt.saver.saver.R;
+import com.sopt.saver.saver.application.ApplicationController;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SignUpActivity extends AppCompatActivity {
 
-
-    private EditText id_edit, pwd_edit, name_edit, major_edit;
-    private RadioGroup part_Radio, jender_Radio;
-    private Button submit_btn, reset_btn;
-    private RadioButton temppart, tempjender;
-
+    private EditText id_edit, pw_edit, name_edit, pw_check_edit, bank_edit, phone_edit, account_edit, birth_edit;
+    private Button submit_btn;
+    private ImageView back_img;
+    private CheckBox sms_bx, email_bx, use_bx, personal_bx;
+    ////////////////////네트워크//////////////////////////
+    private NetworkService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tl_tabs);
-        //viewpager
-        ViewPager viewPager = (ViewPager) findViewById(R.id.vp_pager);
-
-        //프래그먼트 배열 - 만들어 놓은 프래그먼트를 차례대로 넣어 준다.
-        Fragment[] arrFragments = new Fragment[2];
-        arrFragments[0] = new FirstFragment();
-        arrFragments[1] = new SecondFragment();
-
-        //어답터 생성후 연결 - 배열을 인자로 추가해 준다.
-        MyPagerAdapter adapter = new MyPagerAdapter(getSupportFragmentManager(), arrFragments);
-        viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
-    }
-    public View.OnClickListener submitclickEvent = new View.OnClickListener() {
-        public void onClick(View v) {
-
-        }
-    };
-
-    private class MyPagerAdapter extends FragmentPagerAdapter {
-
-        private Fragment[] arrFragments;
-
-        //생성자
-        public MyPagerAdapter(FragmentManager fm, Fragment[] arrFragments) {
-            super(fm);
-            this.arrFragments = arrFragments;
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return arrFragments[position];
-        }
-
-        @Override
-        public int getCount() {
-            return arrFragments.length;
-        }
-
-        //Tab의 타이틀 설정
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "First";
-                case 1:
-                    return "Second";
-                default:
-                    return "";
+        //////////////////////네트워크 초기화////////////////
+        service = ApplicationController.getInstance().getNetworkService();
+        /////////////////객체 초기화////////////////////////
+        id_edit = (EditText) findViewById(R.id.signup_id_edit);
+        pw_edit = (EditText) findViewById(R.id.signup_pw_edit);
+        pw_check_edit = (EditText) findViewById(R.id.signup_pw_check_edit);
+        name_edit = (EditText) findViewById(R.id.signup_name_edit);
+        phone_edit = (EditText) findViewById(R.id.signup_phone_edit);
+        bank_edit = (EditText) findViewById(R.id.signup_bank_edit);
+        account_edit = (EditText) findViewById(R.id.signup_account_edit);
+        birth_edit = (EditText) findViewById(R.id.signup_birth_edit);
+        submit_btn = (Button) findViewById(R.id.signup_submit_btn);
+        back_img = (ImageView) findViewById(R.id.signup_back_img);
+        sms_bx = (CheckBox) findViewById(R.id.signup_sms_check);
+        email_bx = (CheckBox) findViewById(R.id.signup_email_check);
+        use_bx = (CheckBox) findViewById(R.id.signup_use_check);
+        personal_bx = (CheckBox) findViewById(R.id.signup_personal_check);
+        ////////////////클릭 이벤트 정의///////////////////
+        bank_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BankSelectDialog bankSelectDialog = new BankSelectDialog();
+                bankSelectDialog.show();
             }
-            //return super.getPageTitle(position);
+        });
+        submit_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (id_edit.getText().length() == 0) {
+                    Toast.makeText(getApplicationContext(), "아이디를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    id_edit.requestFocus();                 // requestFocus() id_edittext로 focus 이동
+                    return;
+                } else if (pw_edit.getText().length() == 0) {
+                    Toast.makeText(getApplicationContext(), "비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    pw_edit.requestFocus();
+                    return;
+                } else if (pw_check_edit.getText().length() != pw_edit.length()) {
+                    Toast.makeText(getApplicationContext(), "비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
+                    pw_check_edit.requestFocus();
+                    return;
+                } else if (name_edit.getText().length() == 0) {
+                    Toast.makeText(getApplicationContext(), "이름을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    name_edit.requestFocus();
+                    return;
+                } else if (phone_edit.getText().length() == 0) {
+                    Toast.makeText(getApplicationContext(), "핸드폰 번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    phone_edit.requestFocus();
+                    return;
+                } else if (use_bx.isChecked() == false || personal_bx.isChecked() == false) {
+                    Toast.makeText(getApplicationContext(), "회원 가입 동의를 체크해주세요.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                /////////////////////서버 통신///////////////////////////////
+                String id = id_edit.getText().toString();
+                String password = pw_edit.getText().toString();
+                String password2 = pw_check_edit.getText().toString();
+                String name = name_edit.getText().toString();
+                String phone = phone_edit.getText().toString();
+                String bankname = bank_edit.getText().toString();
+                String account = account_edit.getText().toString();
+                String birth = birth_edit.getText().toString();
+                SignInfo signInfo = new SignInfo(id, password, password2, name, phone, bankname, account, birth);
+                Call<SignResult> requestSign = service.registerSignInfo(signInfo);
+                requestSign.enqueue(new Callback<SignResult>() {
+                    @Override
+                    public void onResponse(Call<SignResult> call, Response<SignResult> response) {
+                        if (response.isSuccessful()) {
+                            //////////////회원가입 성공////////////
+                            if (response.body().message.equals("ok")) {
+                                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Sign Error", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<SignResult> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(), "Failuer Error", Toast.LENGTH_SHORT).show();
+                        Log.i("myTag", t.toString());
+                    }
+                });
+            }
+        });
+        back_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_login = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent_login);
+                finish();
+            }
+        });
+    }
+
+    public class BankSelectDialog extends Dialog implements DialogInterface.OnClickListener {
+        Button okButton;
+        Button cancelButton;
+        NumberPicker bankpicker;
+        final String banklist[] = {"국민은행", "신한은행", "외환은행", "농협", "우리은행", "수협"};
+
+        public BankSelectDialog() {
+            super(SignUpActivity.this);
+            setContentView(R.layout.dialog_selectbank);
+            bankpicker = (NumberPicker)findViewById(R.id.bank_picker);
+            bankpicker.setMinValue(0);
+            bankpicker.setMaxValue(banklist.length - 1);
+            bankpicker.setDisplayedValues(banklist);
+            bankpicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+            okButton = (Button) findViewById(R.id.bank_dialog_ok_btn);
+            okButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    bank_edit.setText(banklist[bankpicker.getValue()].toString());
+                    dismiss();
+                }
+            });
+            cancelButton = (Button) findViewById(R.id.bank_dialog_cancel_btn);
+            cancelButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dismiss();
+                }
+            });
+        }
+
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+
         }
     }
 }

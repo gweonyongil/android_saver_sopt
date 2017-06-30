@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.sopt.saver.saver.Category.CategoryActivity;
 import com.sopt.saver.saver.Electronics.ESellerRecyclerViewActivity;
 import com.sopt.saver.saver.MainPage.MainActivity;
+import com.sopt.saver.saver.Message.MessageActivity;
 import com.sopt.saver.saver.Network.NetworkService;
 import com.sopt.saver.saver.R;
 import com.sopt.saver.saver.application.ApplicationController;
@@ -105,7 +106,7 @@ public class MydealRecyclerViewActivity extends AppCompatActivity implements Swi
         messageImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent message_intent = new Intent(MydealRecyclerViewActivity.this, CategoryActivity.class);
+                Intent message_intent = new Intent(MydealRecyclerViewActivity.this, MessageActivity.class);
                 message_intent.putExtra("userid", userid);
                 startActivity(message_intent);
             }

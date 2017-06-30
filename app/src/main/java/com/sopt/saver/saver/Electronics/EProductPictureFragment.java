@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.sopt.saver.saver.ImageLoadTask;
+import com.sopt.saver.saver.API.ImageLoadTask;
 import com.sopt.saver.saver.R;
 
 /**

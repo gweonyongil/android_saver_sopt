@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
     private ArrayList<EItemData> eDatas;
     private LinearLayoutManager mLayoutManager;
     private ERecyclerAdapter adapter;
+    private EditText search_et;
     private ImageView backImg;
     private ImageView writeImg;
     private ImageView findImg;
@@ -48,6 +50,7 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
         ////////////////////////서비스 객체 초기화////////////////////////
         service = ApplicationController.getInstance().getNetworkService();
         ////////////////////////뷰 객체 초기화////////////////////////
+        search_et = (EditText)findViewById(R.id.ER_search_et);
         backImg = (ImageView)findViewById(R.id.electronics_back_img);
         writeImg = (ImageView) findViewById(R.id.electronics_write_img);
         findImg = (ImageView) findViewById(R.id.electronics_find_img);
@@ -89,7 +92,9 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
         findImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ///////////////////////EDIT TEXT 비쥬얼 변경//////////////////////
+                
+                ///////////////////////검색 시 서버와 통신////////////////////////
             }
         });
         /*

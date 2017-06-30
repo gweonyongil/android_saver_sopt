@@ -7,12 +7,21 @@ package com.sopt.saver.saver.Sign;
 public class SignInfo {
     String id;
     String password;
+    String password2;
     String name;
-//    String email;
-    String birth;
     String phone;
-//    String address;
     String bankname;
     String account;
-//    File profileimage;
+    String birth;
+    public SignInfo(String id, String password, String password2, String name, String phone, String bankname, String account, String birth)
+    {
+        this.id = id;
+        this.password = password;
+        this.password2 = password2;
+        this.name = name;
+        this.phone = phone;
+        this.bankname = bankname;
+        this.account = account;
+        this.birth = birth;
+    }
 }

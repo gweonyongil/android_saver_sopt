@@ -6,6 +6,8 @@ package com.sopt.saver.saver.Mydeal;
 
 public class Mydeal_ProductData {
     int id;
+    String userid;
+    String title;
     String product;
     String price;
     String time;
@@ -15,6 +17,8 @@ public class Mydeal_ProductData {
     //////////TEST CONSTRUCTOR//////////
     public Mydeal_ProductData()
     {
+        userid = "test";
+        title = "test";
         product = "test";
         price = "test";
         time = "test";

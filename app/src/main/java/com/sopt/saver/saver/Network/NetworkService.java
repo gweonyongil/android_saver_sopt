@@ -36,6 +36,7 @@ public interface NetworkService {
     @GET("/mypage/{id}")
     Call<MyPageResult> getMyPageInfo(@Path("id") String id);
     ///////////////////메인화면///////////////////
+    @GET("")
 
     ////////////////////회원가입//////////////////
     @POST("/register")

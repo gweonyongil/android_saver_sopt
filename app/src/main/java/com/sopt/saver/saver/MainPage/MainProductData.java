@@ -5,6 +5,8 @@ package com.sopt.saver.saver.MainPage;
  */
 
 public class MainProductData {
-    String product;
+    String image;
+    String title;
+    String content;
     String price;
 }

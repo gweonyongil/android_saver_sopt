@@ -5,7 +5,7 @@ package com.sopt.saver.saver.MainPage;
  */
 
 public class MainPageData {
+    int peopleCount;
     int informationCount;
     int allcommentCount;
-
 }

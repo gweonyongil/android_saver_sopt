@@ -106,9 +106,9 @@
         android:background="@drawable/login_naver"></Button>
 
     <LinearLayout
-        android:layout_marginTop="23dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
@@ -116,7 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="아직 회원이 아니십니까?"
-            android:textColor="#FFFFFF"/>
+            android:textColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/signup_btn"
@@ -124,7 +124,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:text="회원가입"
-            android:textColor="#FFFFFF"/>
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#FFFFFF"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>

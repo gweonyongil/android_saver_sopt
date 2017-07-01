@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.sopt.saver.saver.Category.CategoryActivity;
 import com.sopt.saver.saver.Electronics.ESellerRecyclerViewActivity;
-import com.sopt.saver.saver.MainPage.MainActivity;
+import com.sopt.saver.saver.MainPage.MainPageActivity;
 import com.sopt.saver.saver.Message.MessageActivity;
 import com.sopt.saver.saver.Network.NetworkService;
 import com.sopt.saver.saver.R;
@@ -90,7 +90,7 @@ public class MydealRecyclerViewActivity extends AppCompatActivity implements Swi
         homeImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent home_intent = new Intent(MydealRecyclerViewActivity.this, MainActivity.class);
+                Intent home_intent = new Intent(MydealRecyclerViewActivity.this, MainPageActivity.class);
                 home_intent.putExtra("userid", userid);
                 startActivity(home_intent);
             }

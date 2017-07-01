@@ -14,21 +14,23 @@ import com.sopt.saver.saver.R;
 public class EItemDataViewHolder extends RecyclerView.ViewHolder {
 
     ImageView electronics_item_img;
-    //ImageView electronics_user_img;
-    TextView electronics_time_tv;
-    TextView electronics_name_tv;
+    TextView electronics_title_tv;
+    TextView electronics_product_tv;
     TextView electronics_price_tv;
-    TextView electronics_able_time_tv;
     TextView electronics_commentnum_tv;
+    TextView electronics_time_tv;
+    TextView electronics_dday_tv;
+    TextView electronics_user_id_tv;
 
     public EItemDataViewHolder(View itemView){
         super(itemView);
         electronics_item_img = (ImageView)itemView.findViewById(R.id.electronics_item_img);
-        //electronics_user_img = (ImageView)itemView.findViewById(R.id.electronics_full_user_item_img);
-        electronics_time_tv = (TextView)itemView.findViewById(R.id.electronics_item_text1);
-        electronics_name_tv = (TextView)itemView.findViewById(R.id.electronics_item_text2);
+        electronics_title_tv = (TextView)itemView.findViewById(R.id.electronics_item_text1);
+        electronics_product_tv = (TextView)itemView.findViewById(R.id.electronics_item_text2);
         electronics_price_tv = (TextView)itemView.findViewById(R.id.electronics_item_text3);
-        electronics_able_time_tv = (TextView)itemView.findViewById(R.id.electronics_item_image1_text);
-        electronics_commentnum_tv = (TextView)itemView.findViewById(R.id.electronics_item_image2_text);
+        electronics_dday_tv = (TextView)itemView.findViewById(R.id.electronics_item_text4);
+        electronics_time_tv = (TextView)itemView.findViewById(R.id.electronics_item_text5);
+        electronics_user_id_tv = (TextView)itemView.findViewById(R.id.electronics_item_text6);
+        electronics_commentnum_tv = (TextView)itemView.findViewById(R.id.electronics_item_image1_text);
     }
 }

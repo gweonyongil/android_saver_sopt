@@ -34,7 +34,7 @@ public class MydealRecyclerAdapter extends RecyclerView.Adapter<MydealViewHolder
     @Override
     public MydealViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.electronics_item_description, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.mydeal_item_description, parent, false);
         view.setOnClickListener(clickListener);
         MydealViewHolder mydealViewHolder = new MydealViewHolder(view);
         return mydealViewHolder;

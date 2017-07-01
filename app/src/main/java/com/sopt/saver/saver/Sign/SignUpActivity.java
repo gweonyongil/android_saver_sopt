@@ -1,9 +1,11 @@
 package com.sopt.saver.saver.Sign;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -28,16 +30,17 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText id_edit, pw_edit, name_edit, pw_check_edit, bank_edit, phone_edit, account_edit, birth_edit;
     private Button submit_btn;
     private ImageView back_img;
-    private CheckBox sms_bx, email_bx, use_bx, personal_bx;
-    ////////////////////네트워크//////////////////////////
+    private CheckBox sms_bx, use_bx, personal_bx;
+    private Vibrator vibe;
+    ////////////////////서비스/////////////////////////
     private NetworkService service;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        //////////////////////네트워크 초기화////////////////
+        //////////////////////네트워크&서비스 초기화////////////////
         service = ApplicationController.getInstance().getNetworkService();
+        vibe = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
         /////////////////객체 초기화////////////////////////
         id_edit = (EditText) findViewById(R.id.signup_id_edit);
         pw_edit = (EditText) findViewById(R.id.signup_pw_edit);
@@ -50,41 +53,48 @@ public class SignUpActivity extends AppCompatActivity {
         submit_btn = (Button) findViewById(R.id.signup_submit_btn);
         back_img = (ImageView) findViewById(R.id.signup_back_img);
         sms_bx = (CheckBox) findViewById(R.id.signup_sms_check);
-        email_bx = (CheckBox) findViewById(R.id.signup_email_check);
-        use_bx = (CheckBox) findViewById(R.id.signup_use_check);
+        use_bx = (CheckBox)findViewById(R.id.signup_use_check);
         personal_bx = (CheckBox) findViewById(R.id.signup_personal_check);
         ////////////////클릭 이벤트 정의///////////////////
-        bank_edit.setOnClickListener(new View.OnClickListener() {
+        bank_edit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onClick(View v) {
-                BankSelectDialog bankSelectDialog = new BankSelectDialog();
-                bankSelectDialog.show();
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus == true) {
+                    BankSelectDialog bankSelectDialog = new BankSelectDialog();
+                    bankSelectDialog.show();
+                }
             }
         });
         submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (id_edit.getText().length() == 0) {
+                    vibe.vibrate(1000);
                     Toast.makeText(getApplicationContext(), "아이디를 입력해주세요.", Toast.LENGTH_SHORT).show();
                     id_edit.requestFocus();                 // requestFocus() id_edittext로 focus 이동
                     return;
                 } else if (pw_edit.getText().length() == 0) {
+                    vibe.vibrate(1000);
                     Toast.makeText(getApplicationContext(), "비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
                     pw_edit.requestFocus();
                     return;
                 } else if (pw_check_edit.getText().length() != pw_edit.length()) {
+                    vibe.vibrate(1000);
                     Toast.makeText(getApplicationContext(), "비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
                     pw_check_edit.requestFocus();
                     return;
                 } else if (name_edit.getText().length() == 0) {
+                    vibe.vibrate(1000);
                     Toast.makeText(getApplicationContext(), "이름을 입력해주세요.", Toast.LENGTH_SHORT).show();
                     name_edit.requestFocus();
                     return;
                 } else if (phone_edit.getText().length() == 0) {
+                    vibe.vibrate(1000);
                     Toast.makeText(getApplicationContext(), "핸드폰 번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
                     phone_edit.requestFocus();
                     return;
                 } else if (use_bx.isChecked() == false || personal_bx.isChecked() == false) {
+                    vibe.vibrate(1000);
                     Toast.makeText(getApplicationContext(), "회원 가입 동의를 체크해주세요.", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -110,12 +120,14 @@ public class SignUpActivity extends AppCompatActivity {
                                 finish();
                             }
                         } else {
+                            vibe.vibrate(1000);
                             Toast.makeText(getApplicationContext(), "Sign Error", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<SignResult> call, Throwable t) {
+                        vibe.vibrate(1000);
                         Toast.makeText(getApplicationContext(), "Failuer Error", Toast.LENGTH_SHORT).show();
                         Log.i("myTag", t.toString());
                     }

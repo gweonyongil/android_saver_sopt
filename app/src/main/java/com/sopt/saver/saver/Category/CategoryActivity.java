@@ -9,10 +9,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.sopt.saver.saver.Electronics.ERecyclerViewActivity;
-import com.sopt.saver.saver.MainPage.MainActivity;
+import com.sopt.saver.saver.MainPage.MainPageActivity;
 import com.sopt.saver.saver.Message.MessageActivity;
 import com.sopt.saver.saver.Mydeal.MydealRecyclerViewActivity;
-import com.sopt.saver.saver.Mypage.MypageActivity;
+import com.sopt.saver.saver.Mypage.MyPageActivity;
 import com.sopt.saver.saver.R;
 
 public class CategoryActivity extends AppCompatActivity {
@@ -58,7 +58,7 @@ public class CategoryActivity extends AppCompatActivity {
         mypage_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mypage_intent = new Intent(CategoryActivity.this, MypageActivity.class);
+                Intent mypage_intent = new Intent(CategoryActivity.this, MyPageActivity.class);
                 mypage_intent.putExtra("userid", userid.toString());
                 startActivity(mypage_intent);
             }
@@ -73,7 +73,7 @@ public class CategoryActivity extends AppCompatActivity {
         home_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent home_intent = new Intent(CategoryActivity.this, MainActivity.class);
+                Intent home_intent = new Intent(CategoryActivity.this, MainPageActivity.class);
                 home_intent.putExtra("userid", userid.toString());
                 startActivity(home_intent);
             }

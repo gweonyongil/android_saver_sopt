@@ -105,6 +105,7 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
 
           통신부는 따로 정리해서 올려드리겠습니다!!
          */
+        ////////////////////CATEGORY별 서버통신///////////////////////
         category = getIntent().getExtras().getString("category");
         userid = getIntent().getExtras().getString("userid");
         Call<EItemResult> requestElectronicsData;

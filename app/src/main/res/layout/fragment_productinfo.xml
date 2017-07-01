@@ -1,116 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:background="#fafafa"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_width="51dp"
+            android:layout_height="51dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="33dp"
+            android:background="@drawable/detailpage_profilebg">
+            <ImageView
+                android:id="@+id/electronics_prodInfo_item_img"
+                android:layout_width="45dp"
+                android:layout_height="45dp" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/electronics_prodInfo_user_id_tv"
-            android:layout_width="match_parent"
+            android:id="@+id/electronics_prodInfo_time_tv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="아이디" />
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="60dp"
+            android:text="null[time]"
+            android:textSize="9dp"
+            android:textColor="#000000"/>
 
-        <ImageView
-            android:id="@+id/electronics_prodInfo_item_img"
-            android:layout_width="100dp"
-            android:layout_height="100dp" />
-
-        <Button
-            android:id="@+id/electronics_prodInfo_picture_btn"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/electronics_prodInfo_userid_tv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="사진보기" />
-    </LinearLayout>
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/electronics_prodInfo_time_tv"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="3dp"
+            android:text="null[id]"
+            android:textColor="#fb9726"
+            android:textSize="9dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/electronics_prodInfo_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="아이폰 6 더 싸게 구해요!"
+        android:textColor="#000000"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="36dp"
             android:orientation="horizontal">
-
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/detailpage_question"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="8dp"
+                android:text="상품"
+                android:textSize="11dp"
+                android:textColor="#000000"/>
             <TextView
                 android:id="@+id/electronics_prodInfo_item_text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="텍스트1" />
-
-            <TextView
-                android:id="@+id/electronics_prodInfo_time_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="Time" />
+                android:text="[NULL] null"
+                android:textColor="#000000"
+                android:textSize="11dp"/>
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/electronics_prodInfo_item_text2"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="텍스트2" />
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="36dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/detailpage_money"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="8dp"
+                android:text="찾은 가격"
+                android:textColor="#000000"
+                android:textSize="11dp"/>
 
-        <TextView
-            android:id="@+id/electronics_prodInfo_item_text3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="텍스트3" />
+            <TextView
+                android:id="@+id/electronics_prodInfo_item_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="null"
+                android:textColor="#000000"
+                android:textSize="11dp"/>
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/electronics_prodInfo_item_text4"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="텍스트4" />
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="36dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/detailpage_time"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="8dp"
+                android:text="기한"
+                android:textColor="#000000"
+                android:textSize="11dp"/>
 
-        <TextView
-            android:id="@+id/electronics_prodInfo_item_text5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="텍스트5" />
+            <TextView
+                android:id="@+id/electronics_prodInfo_item_text3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="null"
+                android:textColor="#000000"
+                android:textSize="11dp"/>
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/electronics_prodInfo_item_text6"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="텍스트6" />
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="36dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/detailpage_talk"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="8dp"
+                android:text="덧붙일 말"
+                android:textColor="#000000"
+                android:textSize="11dp"/>
 
-        <TextView
-            android:id="@+id/electronics_prodInfo_item_text7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="텍스트7" />
+            <TextView
+                android:id="@+id/electronics_prodInfo_item_text4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="null"
+                android:textColor="#000000"
+                android:textSize="11dp"/>
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/electronics_prodInfo_item_text8"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="텍스트8" />
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="36dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/detailpage_question"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="8dp"
+                android:text="추가정보"
+                android:textColor="#000000"
+                android:textSize="11dp"/>
+
+            <TextView
+                android:id="@+id/electronics_prodInfo_item_text5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="null"
+                android:textColor="#000000"
+                android:textSize="11dp"/>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_marginTop="26dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp">
+            <Button
+                android:layout_centerInParent="true"
+                android:id="@+id/electronics_prodInfo_answer_btn"
+                android:background="@drawable/detailpage_reply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="21dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/detailpage_circle1"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/detailpage_circle2"/>
+            </LinearLayout>
             <LinearLayout
                 android:id="@+id/prodInfo_able_time_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
                 android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:orientation="horizontal">
-
                 <ImageView
                     android:id="@+id/electronics_prodInfo_item_image1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/detailbox_talk"
                     android:layout_toLeftOf="@+id/electronics_prodInfo_item_image1_text" />
 
                 <TextView
@@ -118,40 +250,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@+id/electronics_prodInfo_item_image2"
-                    android:text="text1" />
+                    android:text="text1"
+                    android:textColor="#000000"
+                    android:textSize="9dp"/>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/prodInfo_able_time_layout"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/electronics_prodInfo_item_image2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@+id/electronics_prodInfo_item_image2_text" />
-
-                <TextView
-                    android:id="@+id/electronics_prodInfo_item_image2_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:text="text2" />
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/electronics_prodInfo_answer_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginEnd="59dp"
-                android:layout_marginRight="59dp"
-                android:layout_toLeftOf="@+id/prodInfo_able_time_layout"
-                android:layout_toStartOf="@+id/prodInfo_able_time_layout"
-                android:text="답변하기" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

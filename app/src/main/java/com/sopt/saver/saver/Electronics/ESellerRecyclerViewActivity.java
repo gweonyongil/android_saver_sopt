@@ -3,6 +3,7 @@ package com.sopt.saver.saver.Electronics;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -11,7 +12,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -94,20 +97,27 @@ public class ESellerRecyclerViewActivity extends AppCompatActivity implements Sw
         adapter = new ESellerRecyclerAdapter(eDatas, clickEvent, open_btn_clickEvent);
         recyclerView.setAdapter(adapter);
         ////////////////////////리스트 목록 추가 버튼에 리스너 설정////////////////////////
+        viewPager.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                PointF downP = new PointF();
+                PointF curP = new PointF();
+                int act = event.getAction();
+                if (act == MotionEvent.ACTION_DOWN || act == MotionEvent.ACTION_MOVE || act == MotionEvent.ACTION_UP) {
+                    ((ViewGroup) v).requestDisallowInterceptTouchEvent(true);
+                    if (downP.x == curP.x && downP.y == curP.y) {
+                        return false;
+                    }
+                }
+                return false;
+            }
+        });
         back_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        /*
-          OnCreate()- 생명주기 내의 통신
-         액티비티가 지워지고 재생성 되지않는 이상 한 번만 실행됩니다.
-         이러한 이유로 아래 쪽에 OnRestart()를 오버라이드 하여 메인액티비티가 재실행되는 경우
-          리스트를 갱신합니다 아래에 있어요!!
-
-          통신부는 따로 정리해서 올려드리겠습니다!!
-         */
         //Seller RecyclerView 서버 연동
         Call<ESellerResult> requestElectronicsSellerData = service.getElectronicsSellerResult(id);
         requestElectronicsSellerData.enqueue(new Callback<ESellerResult>() {

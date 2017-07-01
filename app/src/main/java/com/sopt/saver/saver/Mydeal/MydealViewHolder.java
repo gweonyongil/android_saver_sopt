@@ -14,7 +14,9 @@ import com.sopt.saver.saver.R;
 public class MydealViewHolder extends RecyclerView.ViewHolder{
     ImageView mydeal_item_img;
     //ImageView electronics_user_img;
+    TextView mydeal_userid_tv;
     TextView mydeal_time_tv;
+    TextView mydeal_title_tv;
     TextView mydeal_product_tv;
     TextView mydeal_price_tv;
     TextView mydeal_dday_tv;
@@ -22,12 +24,14 @@ public class MydealViewHolder extends RecyclerView.ViewHolder{
 
     public MydealViewHolder(View itemView){
         super(itemView);
-        mydeal_item_img = (ImageView)itemView.findViewById(R.id.electronics_item_img);
+        mydeal_item_img = (ImageView)itemView.findViewById(R.id.mydeal_item_img);
         //electronics_user_img = (ImageView)itemView.findViewById(R.id.electronics_full_user_item_img);
-        mydeal_time_tv = (TextView)itemView.findViewById(R.id.electronics_item_text1);
-        mydeal_product_tv = (TextView)itemView.findViewById(R.id.electronics_item_text2);
-        mydeal_price_tv = (TextView)itemView.findViewById(R.id.electronics_item_text3);
-        mydeal_dday_tv = (TextView)itemView.findViewById(R.id.electronics_item_image1_text);
-        mydeal_commentnum_tv = (TextView)itemView.findViewById(R.id.electronics_item_image2_text);
+        mydeal_title_tv = (TextView)itemView.findViewById(R.id.mydeal_item_text1);
+        mydeal_product_tv = (TextView)itemView.findViewById(R.id.mydeal_item_text2);
+        mydeal_price_tv = (TextView)itemView.findViewById(R.id.mydeal_item_text3);
+        mydeal_dday_tv = (TextView)itemView.findViewById(R.id.mydeal_item_text4);
+        mydeal_time_tv = (TextView)itemView.findViewById(R.id.mydeal_item_text5);
+        mydeal_userid_tv = (TextView)itemView.findViewById(R.id.mydeal_item_text6);
+        mydeal_commentnum_tv = (TextView)itemView.findViewById(R.id.mydeal_item_image1_text);
     }
 }

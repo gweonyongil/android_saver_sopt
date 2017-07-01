@@ -21,7 +21,6 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:src="@drawable/message2_back" />
-
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="25dp"
@@ -36,7 +35,6 @@
             android:hint="전자제품"
             android:textColor="#000000"
             android:textColorHint="#000000" />
-
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -47,7 +45,7 @@
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_weight="0.3"
+        android:layout_weight="0.6"
         android:layout_height="0dp"
         android:orientation="horizontal">
         <android.support.v4.view.ViewPager
@@ -60,10 +58,11 @@
         android:id="@+id/RefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.6">
+        android:layout_weight="0.3">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/electronics_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
     </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

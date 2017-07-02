@@ -5,33 +5,27 @@ package com.sopt.saver.saver.Electronics;
  */
 
 public class EProductData {
-    int id;
-    String userid;
+    int elec_num;
+    String id;
     String title;
-    String category;
     String kind;
     String product;
     String price;
-    String url;
-    String explantion;
-    String addInformation;
+    String period;
     String time;
-    String dday;
+    String explantion;
+    String addinformation;
+    String count;
     String image;
-    String comcount;
+    String profileimage;
     public EProductData(){
-        userid = "test";
         title = "test";
-        category = "test";
         kind = "test";
         product = "test";
         price = "test";
-        url = "test";
         explantion = "test";
-        addInformation = "test";
+        addinformation = "test";
         time = "test";
-        dday = "test";
         image = "test";
-        comcount = "test";
     }
 }

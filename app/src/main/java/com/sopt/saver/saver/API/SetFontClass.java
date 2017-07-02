@@ -29,5 +29,4 @@ public class SetFontClass {
         typeface.createFromAsset(context.getAssets(), "NotoSansCJKkr-Bold.otf");
         return typeface;
     }
-
 }

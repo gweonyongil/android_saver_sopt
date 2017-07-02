@@ -39,7 +39,7 @@
                     android:layout_gravity="left"
                     android:background="@android:color/transparent"
                     android:layout_weight="0.1"
-                    android:id="@+id/mypage_main_btn"/>
+                    android:id="@+id/mypage_back_btn"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -114,7 +114,6 @@
             android:layout_weight="0.55"
             android:id="@+id/mypage_list"
             android:divider="#000000">
-
         </ListView>
 
 

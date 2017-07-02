@@ -31,6 +31,7 @@ public class ERecyclerAdapter extends RecyclerView.Adapter<EItemDataViewHolder> 
         this.electronics_itemDatas = electronics_itemDatas;
         notifyDataSetChanged();
     }
+
     @Override
     public EItemDataViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
@@ -42,26 +43,26 @@ public class ERecyclerAdapter extends RecyclerView.Adapter<EItemDataViewHolder> 
 
     @Override
     public void onBindViewHolder(EItemDataViewHolder holder, int position) {
-//        new ImageLoadTask(electronics_itemDatas.get(position).image, holder.electronics_item_img).execute();
-//        if(electronics_itemDatas.get(position).image != null)
-//        {
-//            Glide.with(context)
-//                    .load(electronics_itemDatas.get(position).image)
-//                    .bitmapTransform(new CropCircleTransformation(context))
-//                    .into(holder.electronics_item_img);
-//        }
+        if (electronics_itemDatas.get(position).product != null) {
+            Glide.with(context)
+                    .load(electronics_itemDatas.get(position).profileimage)
+                    .bitmapTransform(new CropCircleTransformation(context))
+                    .into(holder.electronics_item_img);
+        }
         /////////////CIRCLE TEST///////////////////////////
-        Glide.with(context)
-                .load(R.drawable.background)
-                .bitmapTransform(new CropCircleTransformation(context))
-                .into(holder.electronics_item_img);
-        holder.electronics_user_id_tv.setText(electronics_itemDatas.get(position).userid);
-        holder.electronics_time_tv.setText(electronics_itemDatas.get(position).time);
+        else
+            Glide.with(context)
+                    .load(R.drawable.background)
+                    .bitmapTransform(new CropCircleTransformation(context))
+                    .into(holder.electronics_item_img);
         holder.electronics_title_tv.setText(electronics_itemDatas.get(position).title);
+        holder.electronics_kind_tv.setText(electronics_itemDatas.get(position).kind);
         holder.electronics_product_tv.setText(electronics_itemDatas.get(position).product);
         holder.electronics_price_tv.setText(electronics_itemDatas.get(position).price);
-        holder.electronics_dday_tv.setText(electronics_itemDatas.get(position).dday);
-        holder.electronics_commentnum_tv.setText(electronics_itemDatas.get(position).comcount);
+        holder.electronics_count_tv.setText(electronics_itemDatas.get(position).count);
+        holder.electronics_time_tv.setText(electronics_itemDatas.get(position).time);
+        holder.electronics_period_tv.setText(electronics_itemDatas.get(position).period);
+        holder.electronics_user_id_tv.setText(electronics_itemDatas.get(position).id);
     }
 
     @Override

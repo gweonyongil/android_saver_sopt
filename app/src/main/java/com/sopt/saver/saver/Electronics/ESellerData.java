@@ -5,17 +5,20 @@ package com.sopt.saver.saver.Electronics;
  */
 
 public class ESellerData {
-    int id;
-    String userid;
     String title;
+    String kind;
     String product;
     String price;
-    String image;
+    String sellerid;
+    String profileimage;
+    String local;
+    String method;
+    String period;
+
     public ESellerData(){
-        userid = "test";
-        title = "test";
-        product = "test";
-        price = "test";
-        image = "test";
+         sellerid = "test";
+         title = "test";
+         product = "test";
+         price = "test";
     }
 }

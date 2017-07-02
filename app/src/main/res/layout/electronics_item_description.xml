@@ -24,8 +24,8 @@
                 android:background="@drawable/detailpage_profilebg">
                 <ImageView
                     android:id="@+id/electronics_item_img"
-                    android:layout_width="69dp"
-                    android:layout_height="69dp" />
+                    android:layout_width="67dp"
+                    android:layout_height="67dp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -34,7 +34,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/electronics_item_text1"
+                android:id="@+id/electronics_item_title_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="7dp"
@@ -48,7 +48,7 @@
                 android:id="@+id/elec_text2_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/electronics_item_text1"
+                android:layout_below="@+id/electronics_item_title_tv"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="34dp">
 
@@ -58,12 +58,32 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
                     android:src="@drawable/mydeal_question" />
-
                 <TextView
-                    android:id="@+id/electronics_item_text2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="9dp"
+                    android:text="[ "
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/electronics_kind_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="9dp"
+                    android:text="kind"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="9dp"
+                    android:text=" ]"
+                    android:textColor="#000000"/>
+
+                <TextView
+                    android:id="@+id/electronics_item_product_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="9dp"
+                    android:layout_marginLeft="5dp"
                     android:text="텍스트2"
                     android:textColor="#000000" />
             </LinearLayout>
@@ -84,7 +104,7 @@
                     android:src="@drawable/mydeal_money" />
 
                 <TextView
-                    android:id="@+id/electronics_item_text3"
+                    android:id="@+id/electronics_item_price_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="9dp"
@@ -108,7 +128,7 @@
                     android:src="@drawable/mydeal_time" />
 
                 <TextView
-                    android:id="@+id/electronics_item_text4"
+                    android:id="@+id/electronics_item_peroid_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="9dp"
@@ -117,7 +137,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/electronics_item_text5"
+                android:id="@+id/electronics_item_time_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -128,12 +148,12 @@
                 android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/electronics_item_text6"
+                android:id="@+id/electronics_item_userid_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/electronics_item_text5"
+                android:layout_below="@+id/electronics_item_time_tv"
                 android:layout_marginRight="18dp"
                 android:text="텍스트6"
                 android:textSize="9dp"
@@ -156,11 +176,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
-                        android:layout_toLeftOf="@+id/electronics_item_image1_text"
+                        android:layout_toLeftOf="@+id/electronics_item_count_tv"
                         android:src="@drawable/mydeal_talkicon" />
 
                     <TextView
-                        android:id="@+id/electronics_item_image1_text"
+                        android:id="@+id/electronics_item_count_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="18dp"

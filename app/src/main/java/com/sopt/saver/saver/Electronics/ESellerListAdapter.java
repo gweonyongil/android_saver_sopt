@@ -50,7 +50,7 @@ public class ESellerListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         context = parent.getContext();
         if(convertView == null)
@@ -58,27 +58,20 @@ public class ESellerListAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater)parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.electronics_item_seller_description, parent, false);
         }
-
         ImageView seller_img = (ImageView)convertView.findViewById(R.id.electronics_seller_item_img);
         TextView seller_userid = (TextView)convertView.findViewById(R.id.electronics_seller_user_id_text);
         TextView seller_title = (TextView)convertView.findViewById(R.id.electronics_seller_item_text1);
         TextView seller_product = (TextView)convertView.findViewById(R.id.electronics_seller_item_text2);
         TextView seller_price = (TextView)convertView.findViewById(R.id.electronics_seller_item_text3);
         Button seller_open_btn = (Button)convertView.findViewById(R.id.electronics_seller_open_btn);
-
-        //        if(e_sellerDatas.get(position).image != null)
-//        {
-//            Glide.with(context)
-//                    .load(e_sellerDatas.get(position).image)
-//                    .bitmapTransform(new CropCircleTransformation(context))
-//                    .into(holder.e_seller_user_img);
-//        }
-
-        Glide.with(context)
-                .load(R.drawable.background)
-                .bitmapTransform(new CropCircleTransformation(context))
-                .into(seller_img);
-        seller_userid.setText(sellerDatas.get(position).userid);
+        ////////////////뷰 설정/////////////////
+        if(sellerDatas.get(position).profileimage != null) {
+            Glide.with(context)
+                    .load(sellerDatas.get(position).profileimage)
+                    .bitmapTransform(new CropCircleTransformation(context))
+                    .into(seller_img);
+        }
+        seller_userid.setText(sellerDatas.get(position).sellerid);
         seller_title.setText(sellerDatas.get(position).title);
         seller_product.setText(sellerDatas.get(position).product);
         seller_price.setText(sellerDatas.get(position).price);

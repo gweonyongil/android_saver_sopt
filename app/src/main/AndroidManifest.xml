@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sopt.saver.saver">
+    package="com.sopt.saver.saver"
+    android:installLocation="preferExternal">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -15,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
-            android:name=".Category.CategoryActivity"
+            android:name=".Login.LoginActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,16 +24,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Category.CategoryActivity" />
+        <activity android:name=".MainPage.MainPageActivity" />
+        <activity android:name=".Write.WritePageActivity" />
+        <activity android:name=".Electronics.ESellerListViewActivity" />
         <activity android:name=".Mypage.MyPageActivity" />
         <activity android:name=".Electronics.ERecyclerViewActivity" />
-        <activity android:name=".Electronics.ESellerRecyclerViewActivity" />
-        <activity android:name=".Mydeal.MydealRecyclerViewActivity" />
         <activity android:name=".Question.QuestionActivity" />
         <activity android:name=".Message.MessageActivity" />
         <activity android:name=".DetailInfo.DetailActivity" />
         <activity android:name=".Sign.SignUpActivity" />
         <activity android:name=".Answer.AnswerActivity" />
-        <activity android:name=".Electronics.ESellerListViewActivity"></activity>
+        <activity android:name=".Mydeal.MydealActivity"></activity>
     </application>
 
 </manifest>

@@ -7,16 +7,17 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.sopt.saver.saver.Electronics.ERecyclerViewActivity;
 import com.sopt.saver.saver.MainPage.MainPageActivity;
 import com.sopt.saver.saver.Message.MessageActivity;
-import com.sopt.saver.saver.Mydeal.MydealRecyclerViewActivity;
 import com.sopt.saver.saver.Mypage.MyPageActivity;
 import com.sopt.saver.saver.R;
 
 public class CategoryActivity extends AppCompatActivity {
-    private EditText search_et;
+    private EditText find_et;
+    private TextView upper_tv;
     private ImageView mypage_img;
     private ImageView find_img;
     private ImageView home_img;
@@ -36,7 +37,6 @@ public class CategoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
-        search_et = (EditText)findViewById(R.id.category_search_et);
         mypage_img = (ImageView)findViewById(R.id.category_mypage_img);
         find_img = (ImageView)findViewById(R.id.category_find_img);
         home_img = (ImageView)findViewById(R.id.category_home_img);
@@ -49,6 +49,8 @@ public class CategoryActivity extends AppCompatActivity {
         img4 = (ImageView)findViewById(R.id.cate_img4);
         img5 = (ImageView)findViewById(R.id.cate_img5);
         img6 = (ImageView)findViewById(R.id.cate_img6);
+        upper_tv = (TextView)findViewById(R.id.category_upper_tv);
+        find_et = (EditText)findViewById(R.id.category_find_et);
         ///////////////userid 서버 통신시 필요/////////////
         //userid = getIntent().getExtras().getString("userid");
         intent = new Intent(CategoryActivity.this, ERecyclerViewActivity.class);
@@ -66,8 +68,15 @@ public class CategoryActivity extends AppCompatActivity {
         find_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String find = search_et.getText().toString();
-
+                if(find_et.getVisibility() == View.VISIBLE)
+                {
+                    String find_text = find_et.getText().toString();
+                }
+                else if(find_et.getVisibility() != View.VISIBLE)
+                {
+                    find_et.setVisibility(View.VISIBLE);
+                    upper_tv.setVisibility(View.GONE);
+                }
             }
         });
         home_img.setOnClickListener(new View.OnClickListener() {
@@ -98,13 +107,6 @@ public class CategoryActivity extends AppCompatActivity {
                 Intent intent = new Intent(CategoryActivity.this, MydealRecyclerViewActivity.class);
                 ///////////////////////TEST 삽입//////////////////////////////
                 intent.putExtra("userid", userid.toString());
-                startActivity(intent);
-            }
-        });
-        img1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent.putExtra("category", "img1");
                 startActivity(intent);
             }
         });
@@ -144,6 +146,14 @@ public class CategoryActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        find_et.setVisibility(View.GONE);
+        upper_tv.setVisibility(View.VISIBLE);
+    }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch(keyCode)

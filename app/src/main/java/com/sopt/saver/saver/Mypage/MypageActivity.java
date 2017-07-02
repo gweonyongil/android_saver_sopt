@@ -1,38 +1,32 @@
 package com.sopt.saver.saver.Mypage;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
-import com.sopt.saver.saver.MainPage.MainPageActivity;
 import com.sopt.saver.saver.R;
 
 public class MyPageActivity extends AppCompatActivity {
-
+    private ImageButton mypage_back_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
-
-        // 메인페이지 이동
-        findViewById(R.id.mypage_main_btn).setOnClickListener(
-                new Button.OnClickListener(){
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(getApplicationContext(), MainPageActivity.class);
-                        startActivity(intent);
-                    }
-                }
-        );
-
+        //객체 초기화
+        mypage_back_btn = (ImageButton)findViewById(R.id.mypage_back_btn);
+        //클릭 리스너 설정
+        mypage_back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         // 리스트뷰
         ListView listview;
         MyPageListViewAdapter adapter;
-
         adapter = new MyPageListViewAdapter();
 
         listview = (ListView)findViewById(R.id.mypage_list);

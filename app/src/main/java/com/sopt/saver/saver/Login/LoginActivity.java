@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sopt.saver.saver.API.SetFontClass;
-import com.sopt.saver.saver.Mypage.MyPageActivity;
+import com.sopt.saver.saver.MainPage.MainPageActivity;
 import com.sopt.saver.saver.Network.NetworkService;
 import com.sopt.saver.saver.R;
 import com.sopt.saver.saver.Sign.SignUpActivity;
@@ -34,7 +34,7 @@ public class LoginActivity extends Activity {
     private TextView signup_btn;
     private EditText login_id_edit, login_pw_edit;
     private NetworkService service;
-
+    private LoginData loginData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,8 +80,9 @@ public class LoginActivity extends Activity {
                             //////////로그인 성공////////////
                             ////////마이페이지 연동//////////
                             if (response.body().message.equals("ok")) {
-                                Intent intent = new Intent(LoginActivity.this, MyPageActivity.class);
-                                intent.putExtra("userid", inputid.toString());
+                                Intent intent = new Intent(LoginActivity.this, MainPageActivity.class);
+                                intent.putExtra("id", inputid.toString());
+                                intent.putExtra("user_num", response.body().result.user_num);
                                 startActivity(intent);
                             }
                         } else {
@@ -93,7 +94,7 @@ public class LoginActivity extends Activity {
                     @Override
                     public void onFailure(Call<LoginResult> call, Throwable t) {
                         vibe.vibrate(1000);
-                        Toast.makeText(getApplicationContext(), "Login Error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "On Failure", Toast.LENGTH_SHORT).show();
                         Log.i("myTag", t.toString());
                     }
                 });

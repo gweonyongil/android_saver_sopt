@@ -2,9 +2,9 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#fafafa"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fafafa"
     tools:context="com.sopt.saver.saver.Electronics.ESellerListViewActivity">
 
     <LinearLayout
@@ -24,54 +24,66 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.1"
-            android:background="@drawable/category_navibarbg"
-            android:gravity="center"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="0dp">
+            android:background="@drawable/category_navibarbg">
 
             <ImageView
-                android:id="@+id/eseller_back_img"
+                android:id="@+id/eseller_list_back_img"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/message2_back" />
 
-            <EditText
-                android:id="@+id/ER_search_et"
+            <TextView
+                android:gravity="center"
+                android:id="@+id/esller_list_upperbar_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
-                android:layout_centerHorizontal="true"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="60dp"
                 android:layout_marginTop="10dp"
-                android:background="@null"
-                android:cursorVisible="true"
-                android:hint="전자제품"
+                android:layout_centerInParent="true"
+                android:text="전자제품"
                 android:textColor="#000000"
                 android:textColorHint="#000000" />
-
-            <ImageView
-                android:id="@+id/electronics_find_img"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginBottom="10dp"
-                android:layout_marginRight="20dp"
+            <EditText
+                android:id="@+id/esller_list_find_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="100dp"
+                android:layout_marginLeft="80dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/category_search" />
+                android:layout_marginBottom="10dp"
+                android:textColor="#323232"
+                android:visibility="gone"
+                android:textSize="14dp"
+                android:background="@drawable/barhandbackground"/>
 
             <ImageView
-                android:id="@+id/electronics_write_img"
+                android:id="@+id/esller_list_find_img"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_alignTop="@+id/electronics_find_img"
-                android:layout_marginRight="10dp"
-                android:layout_toLeftOf="@+id/electronics_find_img"
-                android:layout_toStartOf="@+id/electronics_find_img"
+                android:layout_marginRight="21dp"
+                android:src="@drawable/category_search"
+                android:layout_alignTop="@+id/esller_list_write_img"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="21dp" />
+
+            <ImageView
+                android:id="@+id/esller_list_write_img"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_centerInParent="true"
+                android:layout_alignParentRight="true"
                 android:src="@drawable/message2_write" />
         </RelativeLayout>
 
@@ -79,106 +91,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.8"
+            android:layout_weight="0.9"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="0dp">
-            
-            <ScrollView
+
+            <ListView
+                android:id="@+id/eseller_listview"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="none">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <android.support.v4.view.ViewPager
-                        android:id="@+id/ES_frame_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="350dp"
-                        android:layout_gravity="center">
-
-                    </android.support.v4.view.ViewPager>
-                    <ListView
-                        android:id="@+id/eseller_listview"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    </ListView>
-                </LinearLayout>
-            </ScrollView>
+                android:layout_height="match_parent"></ListView>
         </LinearLayout>
-
-
-        <!-- 탭바 -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="0.1"
-            android:background="@drawable/message_tapbarbg"
-            android:orientation="horizontal"
-            tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="8dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <ImageButton
-                    android:id="@+id/mainpage_home_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    android:scaleType="center"
-                    android:src="@drawable/main_tapbarhome" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <ImageButton
-                    android:id="@+id/mainpage_category_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    android:scaleType="center"
-                    android:src="@drawable/main_tapbarcategory" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <ImageButton
-                    android:id="@+id/mainpage_message_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    android:scaleType="center"
-                    android:src="@drawable/main_tapbarmessage" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <ImageButton
-                    android:id="@+id/mainpage_mydeal_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    android:scaleType="center"
-                    android:src="@drawable/main_tapbarmymy" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

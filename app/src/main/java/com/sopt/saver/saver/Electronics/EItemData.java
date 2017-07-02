@@ -5,24 +5,26 @@ package com.sopt.saver.saver.Electronics;
  */
 
 public class EItemData {
-    int id;
-    String userid;
-    String time;
+    int elec_num;
+    String id;
     String title;
+    String kind;
     String product;
-    String price    ;
-    String dday;
-    String image;
-    String comcount;
+    String price;
+    String period;
+    String time;
+    String profileimage;
+    String count;
     public EItemData()
     {
-        userid = "test";
-        time = "test";
-        title = "test";
-        product = "test";
-        price = "test";
-        dday = "test";
-        image = "test";
-        comcount = "test";
+//        id = "test";
+//        title = "test";
+//        kind = "test";
+//        product = "test";
+//        price = "test";
+//        period = "test";
+//        time = "test";
+//        profileimage = "test";
+//        count = "test";
     }
 }

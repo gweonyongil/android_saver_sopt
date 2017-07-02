@@ -6,4 +6,5 @@ package com.sopt.saver.saver.Login;
 
 public class LoginResult {
     String message;
+    LoginData result;
 }

@@ -10,10 +10,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sopt.saver.saver.Network.NetworkService;
 import com.sopt.saver.saver.R;
+import com.sopt.saver.saver.Write.WritePageActivity;
 import com.sopt.saver.saver.application.ApplicationController;
 
 import java.util.ArrayList;
@@ -23,6 +25,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayout.OnRefreshListener {
+
+    private EditText find_et;
+    private TextView upperbar_tv;
     private RecyclerView recyclerView;
     private ArrayList<EItemData> eDatas;
     private LinearLayoutManager mLayoutManager;
@@ -36,7 +41,9 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
     NetworkService service;
     //////intent 통해서 받아온 변수//////
     String category;
-    String userid;
+    String user_num;
+    String id;
+    String find_text;
 
     //Back 키 두번 클릭 여부 확인
     private final long FINSH_INTERVAL_TIME = 2000;
@@ -50,7 +57,8 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
         ////////////////////////서비스 객체 초기화////////////////////////
         service = ApplicationController.getInstance().getNetworkService();
         ////////////////////////뷰 객체 초기화////////////////////////
-        search_et = (EditText)findViewById(R.id.ER_search_et);
+        find_et = (EditText)findViewById(R.id.electronics_find_et);
+        upperbar_tv = (TextView)findViewById(R.id.ER_UPPERBAR_tv);
         backImg = (ImageView)findViewById(R.id.electronics_back_img);
         writeImg = (ImageView) findViewById(R.id.electronics_write_img);
         findImg = (ImageView) findViewById(R.id.electronics_find_img);
@@ -65,11 +73,7 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
         ////////////////////////각 배열에 모델 개체를 가지는 ArrayList 초기화////////////////////////
         eDatas = new ArrayList<EItemData>();
         //////////////////////TEST DISPLAY//////////////////////
-        eDatas.add(new EItemData());
-        eDatas.add(new EItemData());
-        eDatas.add(new EItemData());
-        eDatas.add(new EItemData());
-        eDatas.add(new EItemData());
+
         ////////////////////////리사이클러 뷰와 어뎁터 연동////////////////////////
 
         ////////////////////////파라미터로 위의 ArrayList와 클릭이벤트////////////////////////
@@ -85,15 +89,25 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
         writeImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
-                //startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), WritePageActivity.class);
+                intent.putExtra("user_num", user_num);
+                intent.putExtra("id", id);
+                startActivity(intent);
             }
         });
         findImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ///////////////////////EDIT TEXT 비쥬얼 변경//////////////////////
-                
+                if(find_et.getVisibility() == View.VISIBLE)
+                {
+                    find_text = find_et.getText().toString();
+                }
+                else if(find_et.getVisibility() != View.VISIBLE)
+                {
+                    find_et.setVisibility(View.VISIBLE);
+                    upperbar_tv.setVisibility(View.GONE);
+                }
                 ///////////////////////검색 시 서버와 통신////////////////////////
             }
         });
@@ -107,23 +121,29 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
          */
         ////////////////////CATEGORY별 서버통신///////////////////////
         category = getIntent().getExtras().getString("category");
-        userid = getIntent().getExtras().getString("userid");
+        user_num = getIntent().getExtras().getString("user_num");
+        id = getIntent().getExtras().getString("id");
         Call<EItemResult> requestElectronicsData;
         requestElectronicsData = service.getElectronicsResult();//Default
         if (category.equals("img2")) {
             requestElectronicsData = service.getElectronicsResult();
+            upperbar_tv.setText("전자제품");
         }
         else if (category.equals("img3")) {
             requestElectronicsData = service.getEBrandResult();
+            upperbar_tv.setText("티켓 및 이용권");
         }
         else if (category.equals("img4")) {
             requestElectronicsData = service.getEUtilResult();
+            upperbar_tv.setText("브랜드");
         }
         else if (category.equals("img5")) {
             requestElectronicsData = service.getEEtcResult();
+            upperbar_tv.setText("스마트폰 및 가입상품");
         }
-        else{
+        else if(category.equals("img6")){
             requestElectronicsData = service.getESmartResult();
+            upperbar_tv.setText("기타");
         }
         requestElectronicsData.enqueue(new Callback<EItemResult>() {
             @Override
@@ -132,13 +152,18 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
                     if (response.body().message.equals("ok")) {
                         eDatas = response.body().result;
                         adapter.setAdapter(eDatas);
+                        recyclerView.setAdapter(adapter);
+                    }
+                    else
+                    {
+                        Toast.makeText(ERecyclerViewActivity.this, "UNKNOWN ERROR OCCURED", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<EItemResult> call, Throwable t) {
                 Log.i("fail", t.getMessage());
+                Toast.makeText(ERecyclerViewActivity.this, "NOT CONNECTED", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -171,6 +196,26 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
 
     public void ListReload() {
         Call<EItemResult> requestMainData = service.getElectronicsResult();
+        if (category.equals("img2")) {
+            requestMainData = service.getElectronicsResult();
+            upperbar_tv.setText("전자제품");
+        }
+        else if (category.equals("img3")) {
+            requestMainData = service.getEBrandResult();
+            upperbar_tv.setText("티켓 및 이용권");
+        }
+        else if (category.equals("img4")) {
+            requestMainData = service.getEUtilResult();
+            upperbar_tv.setText("브랜드");
+        }
+        else if (category.equals("img5")) {
+            requestMainData = service.getEEtcResult();
+            upperbar_tv.setText("스마트폰 및 가입상품");
+        }
+        else if(category.equals("img6")){
+            requestMainData = service.getESmartResult();
+            upperbar_tv.setText("기타");
+        }
         requestMainData.enqueue(new Callback<EItemResult>() {
             @Override
             public void onResponse(Call<EItemResult> call, Response<EItemResult> response) {
@@ -194,10 +239,12 @@ public class ERecyclerViewActivity extends Activity implements SwipeRefreshLayou
     public View.OnClickListener clickEvent = new View.OnClickListener() {
         public void onClick(View v) {
             int itemPosition = recyclerView.getChildPosition(v);
-            int tempId = eDatas.get(itemPosition).id;
-            Intent intent = new Intent(getApplicationContext(), ESellerRecyclerViewActivity.class);
-            intent.putExtra("id", String.valueOf(tempId));
-            intent.putExtra("userid", userid);
+            int tempId = eDatas.get(itemPosition).elec_num;
+            Intent intent = new Intent(getApplicationContext(), ESellerListViewActivity.class);
+            intent.putExtra("category", upperbar_tv.getText().toString());
+            intent.putExtra("thing_num", String.valueOf(tempId));
+            intent.putExtra("id", id);
+            intent.putExtra("user_num",user_num);
             startActivity(intent);
         }
     };

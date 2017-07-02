@@ -33,7 +33,9 @@
                 android:id="@+id/electronics_seller_user_id_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:text="아이디"
+                android:textSize="9dp"
                 android:textColor="#FB9726" />
 
         </LinearLayout>

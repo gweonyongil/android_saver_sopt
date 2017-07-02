@@ -3,7 +3,6 @@ package com.sopt.saver.saver.Electronics;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.view.View;
 
 /**
  * Created by kyi42 on 2017-06-28.
@@ -22,10 +21,6 @@ public class EProductInfoPagerAdapter extends FragmentStatePagerAdapter {
     {
         this.info_frag = info_frag;
         this.pict_frag = pict_frag;
-    }
-    public void setOnClickListener(View.OnClickListener onClickListener)
-    {
-        info_frag.getProduct_answer_btn().setOnClickListener(onClickListener);
     }
     @Override
     public Fragment getItem(int position) {

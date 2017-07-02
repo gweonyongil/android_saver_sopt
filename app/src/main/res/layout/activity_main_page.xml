@@ -171,6 +171,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="587,602"
+                                    android:textColor="#000000"
                                     android:layout_toRightOf="@id/peopleicon"
                                     android:layout_marginLeft="5dp"
                                     android:layout_alignBaseline="@id/peopleicon"/>
@@ -179,6 +180,8 @@
                                     android:layout_height="wrap_content"
                                     android:text="활동중인 회원수"
                                     android:textSize="10dp"
+                                    android:textColor="#000000"
+
                                     android:layout_below="@id/peopleicon"
                                     android:layout_centerHorizontal="true"/>
 
@@ -205,6 +208,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="24,566"
+                                    android:textColor="#000000"
+
                                     android:layout_toRightOf="@id/infoicon"
                                     android:layout_marginLeft="5dp"
                                     android:layout_alignBaseline="@id/infoicon"/>
@@ -212,6 +217,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="의뢰한 정보수"
+                                    android:textColor="#000000"
+
                                     android:textSize="10dp"
                                     android:layout_below="@id/infoicon"
                                     android:layout_centerHorizontal="true"/>
@@ -240,6 +247,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="428,593"
+                                    android:textColor="#000000"
                                     android:layout_toRightOf="@id/successicon"
                                     android:layout_marginLeft="5dp"
                                     android:layout_alignBaseline="@id/successicon"/>
@@ -248,6 +256,8 @@
                                     android:layout_height="wrap_content"
                                     android:text="성사된 거래수"
                                     android:textSize="10dp"
+                                    android:textColor="#000000"
+
                                     android:layout_below="@id/successicon"
                                     android:layout_centerHorizontal="true"/>
 
@@ -271,6 +281,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:textColor="#323232"
                             android:textSize="9dp"
                             android:layout_marginLeft="4dp"
                             android:text="전자제품 마감임박 정보 의뢰"/>
@@ -278,6 +289,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/elec_now_item1_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -295,6 +307,7 @@
                             android:layout_weight="8"
                             android:src="@drawable/main_liketalkbox"
                             android:orientation="vertical"
+                            android:background="#fafafa"
                             android:paddingLeft="20dp"
                             android:gravity="center_vertical">
 
@@ -303,6 +316,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="아이폰 6s 더 싸게 구해요!"
+                                android:textColor="#323232"
                                 android:textSize="12dp" />
 
                             <LinearLayout
@@ -321,6 +335,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="상품: [핸드폰]아이폰6"
                                     android:textSize="9dp"
+                                    android:textColor="#323232"
                                     android:layout_marginLeft="4dp"/>
                             </LinearLayout>
 
@@ -340,6 +355,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="찾은가격 : 100000"
                                     android:textSize="9dp"
+                                    android:textColor="#323232"
                                     android:layout_marginLeft="4dp"/>
                             </LinearLayout>
 
@@ -348,6 +364,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/elec_now_item2_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -364,6 +381,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="8"
                             android:src="@drawable/main_liketalkbox"
+                            android:background="#fafafa"
                             android:orientation="vertical"
                             android:paddingLeft="20dp"
                             android:gravity="center_vertical">
@@ -373,6 +391,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="아이폰 6s 더 싸게 구해요!"
+                                android:textColor="#323232"
                                 android:textSize="12dp" />
 
                             <LinearLayout
@@ -391,6 +410,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="상품: [핸드폰]아이폰6"
                                     android:textSize="9dp"
+                                    android:textColor="#323232"
                                     android:layout_marginLeft="4dp"/>
                             </LinearLayout>
 
@@ -410,6 +430,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="찾은가격 : 100000"
                                     android:textSize="9dp"
+                                    android:textColor="#323232"
                                     android:layout_marginLeft="4dp"/>
                             </LinearLayout>
 
@@ -421,7 +442,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/main_bggrey">
-
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -434,12 +454,14 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:textSize="9dp"
+                            android:textColor="#323232"
                             android:layout_marginLeft="4dp"
                             android:text="티켓 및 이용권 마감임박 정보 의뢰"/>
 
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/ticket_now_item1_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -457,6 +479,7 @@
                             android:layout_weight="8"
                             android:src="@drawable/main_liketalkbox"
                             android:orientation="vertical"
+                            android:background="#fafafa"
                             android:paddingLeft="20dp"
                             android:gravity="center_vertical">
 
@@ -465,6 +488,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="아이폰 6s 더 싸게 구해요!"
+                                android:textColor="#323232"
                                 android:textSize="12dp" />
 
                             <LinearLayout
@@ -482,6 +506,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="상품: [핸드폰]아이폰6"
+                                    android:textColor="#323232"
                                     android:textSize="9dp"
                                     android:layout_marginLeft="4dp"/>
                             </LinearLayout>
@@ -501,6 +526,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="찾은가격 : 100000"
+                                    android:textColor="#323232"
                                     android:textSize="9dp"
                                     android:layout_marginLeft="4dp"/>
                             </LinearLayout>
@@ -509,9 +535,10 @@
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
+                        android:id="@+id/ticket_now_item2_layout"
+                        android:background="#fafafa"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-
                         <ImageView
                             android:id="@+id/ticket_item2_img"
                             android:layout_width="0dp"
@@ -534,7 +561,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="아이폰 6s 더 싸게 구해요!"
-                                android:textSize="12dp" />
+                                android:textSize="12dp"
+                                android:textColor="#323232"/>
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -552,7 +580,8 @@
                                     android:layout_height="wrap_content"
                                     android:text="상품: [핸드폰]아이폰6"
                                     android:textSize="9dp"
-                                    android:layout_marginLeft="4dp"/>
+                                    android:layout_marginLeft="4dp"
+                                    android:textColor="#323232"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -570,6 +599,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="찾은가격 : 100000"
+                                    android:textColor="#323232"
                                     android:textSize="9dp"
                                     android:layout_marginLeft="4dp"/>
                             </LinearLayout>
@@ -595,14 +625,17 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:textSize="9dp"
+                            android:textColor="#323232"
                             android:layout_marginLeft="4dp"
                             android:text="브랜드 상품 마감임박 정보 의뢰"/>
 
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/brand_now_item1_layout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:background="#fafafa">
 
                         <ImageView
                             android:id="@+id/brand_item1_img"
@@ -626,6 +659,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="아이폰 6s 더 싸게 구해요!"
+                                android:textColor="#323232"
                                 android:textSize="12dp" />
 
                             <LinearLayout
@@ -643,6 +677,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="상품: [핸드폰]아이폰6"
+                                    android:textColor="#323232"
                                     android:textSize="9dp"
                                     android:layout_marginLeft="4dp"/>
                             </LinearLayout>
@@ -662,6 +697,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="찾은가격 : 100000"
+                                    android:textColor="#323232"
                                     android:textSize="9dp"
                                     android:layout_marginLeft="4dp"/>
                             </LinearLayout>
@@ -670,8 +706,10 @@
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
+                        android:id="@+id/brand_now_item2_layout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:background="#fafafa">
 
                         <ImageView
                             android:id="@+id/brand_item2_img"
@@ -695,6 +733,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="아이폰 6s 더 싸게 구해요!"
+                                android:textColor="#323232"
                                 android:textSize="12dp" />
 
                             <LinearLayout
@@ -712,6 +751,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="상품: [핸드폰]아이폰6"
+                                    android:textColor="#323232"
                                     android:textSize="9dp"
                                     android:layout_marginLeft="4dp"/>
                             </LinearLayout>
@@ -731,6 +771,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="찾은가격 : 100000"
+                                    android:textColor="#323232"
                                     android:textSize="9dp"
                                     android:layout_marginLeft="4dp"/>
                             </LinearLayout>
@@ -756,14 +797,18 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:textSize="9dp"
+                            android:textColor="#000000"
+
                             android:layout_marginLeft="4dp"
                             android:text="스마트폰 및 가입상품 마감임박 정보 의뢰"/>
 
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/smart_now_item1_layout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:background="#fafafa">
 
                         <ImageView
                             android:id="@+id/smart_item1_img"
@@ -787,7 +832,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="아이폰 6s 더 싸게 구해요!"
-                                android:textSize="12dp" />
+                                android:textSize="12dp"
+                                android:textColor="#323232"/>
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -805,6 +851,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="상품: [핸드폰]아이폰6"
                                     android:textSize="9dp"
+                                    android:textColor="#323232"
                                     android:layout_marginLeft="4dp"/>
                             </LinearLayout>
 
@@ -823,6 +870,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="찾은가격 : 100000"
+                                    android:textColor="#323232"
                                     android:textSize="9dp"
                                     android:layout_marginLeft="4dp"/>
                             </LinearLayout>
@@ -831,8 +879,10 @@
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
+                        android:id="@+id/smart_now_item2_layout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:background="#fafafa">
 
                         <ImageView
                             android:id="@+id/smart_item2_img"
@@ -856,6 +906,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="아이폰 6s 더 싸게 구해요!"
+                                android:textColor="#323232"
                                 android:textSize="12dp" />
 
                             <LinearLayout
@@ -873,6 +924,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="상품: [핸드폰]아이폰6"
+                                    android:textColor="#323232"
                                     android:textSize="9dp"
                                     android:layout_marginLeft="4dp"/>
                             </LinearLayout>
@@ -892,6 +944,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="찾은가격 : 100000"
+                                    android:textColor="#323232"
                                     android:textSize="9dp"
                                     android:layout_marginLeft="4dp"/>
                             </LinearLayout>
@@ -917,14 +970,17 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:textSize="9dp"
+                            android:textColor="#000000"
                             android:layout_marginLeft="4dp"
                             android:text="기타 마감임박 정보 의뢰"/>
 
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/etc_now_item1_layout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:background="#fafafa">
 
                         <ImageView
                             android:id="@+id/etc_item1_img"
@@ -948,6 +1004,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="아이폰 6s 더 싸게 구해요!"
+                                android:textColor="#323232"
                                 android:textSize="12dp" />
 
                             <LinearLayout
@@ -965,6 +1022,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="상품: [핸드폰]아이폰6"
+                                    android:textColor="#323232"
                                     android:textSize="9dp"
                                     android:layout_marginLeft="4dp"/>
                             </LinearLayout>
@@ -984,6 +1042,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="찾은가격 : 100000"
+                                    android:textColor="#323232"
                                     android:textSize="9dp"
                                     android:layout_marginLeft="4dp"/>
                             </LinearLayout>
@@ -992,8 +1051,10 @@
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
+                        android:id="@+id/etc_now_item2_layout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:background="#fafafa">
 
                         <ImageView
                             android:id="@+id/etc_item2_img"
@@ -1017,6 +1078,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="아이폰 6s 더 싸게 구해요!"
+                                android:textColor="#323232"
                                 android:textSize="12dp" />
 
                             <LinearLayout
@@ -1034,6 +1096,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="상품: [핸드폰]아이폰6"
+                                    android:textColor="#323232"
                                     android:textSize="9dp"
                                     android:layout_marginLeft="4dp"/>
                             </LinearLayout>
@@ -1053,6 +1116,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="찾은가격 : 100000"
+                                    android:textColor="#323232"
                                     android:textSize="9dp"
                                     android:layout_marginLeft="4dp"/>
                             </LinearLayout>

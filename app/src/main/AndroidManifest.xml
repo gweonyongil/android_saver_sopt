@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sopt.saver.saver"
     android:installLocation="preferExternal">
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -10,13 +9,13 @@
     <application
         android:name=".application.ApplicationController"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/saver_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/saver_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
-            android:name=".Login.LoginActivity"
+            android:name=".Login.SplashActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,18 +23,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Category.CategoryActivity" />
-        <activity android:name=".MainPage.MainPageActivity" />
-        <activity android:name=".Write.WritePageActivity" />
-        <activity android:name=".Electronics.ESellerListViewActivity" />
+        <activity android:name=".Login.LoginActivity"></activity>
+        <activity
+            android:name=".PointPage.PointPageActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name= ".Sign.SignUpActivity"></activity>
+        <activity android:name=".MainViewPager.MainViewPagerActivity"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".Sign.SignUpAddinfoActivity"></activity>
+        <activity android:name=".Mypage.ChargeSuccessActivity" />
+        <activity android:name=".Mypage.ChargePageActivity" />
         <activity android:name=".Mypage.MyPageActivity" />
-        <activity android:name=".Electronics.ERecyclerViewActivity" />
-        <activity android:name=".Question.QuestionActivity" />
-        <activity android:name=".Message.MessageActivity" />
         <activity android:name=".DetailInfo.DetailActivity" />
-        <activity android:name=".Sign.SignUpActivity" />
-        <activity android:name=".Answer.AnswerActivity" />
-        <activity android:name=".Mydeal.MydealActivity"></activity>
+        <activity android:name=".Write.WriteCommentPage" />
+        <activity android:name=".Write.WritePageActivity" />
+        <activity android:name=".Electronics.ESellerListViewActivity"></activity>
+        <activity
+            android:name=".Electronics.ERecyclerListActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".Question.QuestionActivity" />
+        <activity android:name=".Electronics.ERecyclerSearchActivity"></activity>
+        <activity android:name=".Electronics.ERecyclerSearchCategoryActivity"></activity>
+        <activity android:name=".Mypage.EditMyInfoActivity"></activity>
     </application>
-
 </manifest>

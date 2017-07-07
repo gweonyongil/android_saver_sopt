@@ -3,6 +3,7 @@ package com.sopt.saver.saver.Login;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -10,12 +11,13 @@ import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sopt.saver.saver.API.SetFontClass;
-import com.sopt.saver.saver.MainPage.MainPageActivity;
+import com.sopt.saver.saver.MainViewPager.MainViewPagerActivity;
 import com.sopt.saver.saver.Network.NetworkService;
 import com.sopt.saver.saver.R;
 import com.sopt.saver.saver.Sign.SignUpActivity;
@@ -27,16 +29,24 @@ import retrofit2.Response;
 
 public class LoginActivity extends Activity {
 
+    SharedPreferences sf;
+    private NetworkService service;
     Vibrator vibe;
     private SetFontClass setFontClass;
     private Typeface typeface;
     private Button login_btn;
     private TextView signup_btn;
+    private TextView auto_login_tv;
+    private TextView find_id_password_tv;
+    private TextView question_tv;
     private EditText login_id_edit, login_pw_edit;
-    private NetworkService service;
-    private LoginData loginData;
+    CheckBox auto_check;
+
+    String id;
+    String password;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         /////////////서비스 객체 초기화/////////////////
@@ -47,12 +57,18 @@ public class LoginActivity extends Activity {
         login_pw_edit = (EditText) findViewById(R.id.login_pw_edit);
         login_btn = (Button) findViewById(R.id.login_btn);
         signup_btn = (TextView) findViewById(R.id.signup_btn);
+        auto_login_tv = (TextView)findViewById(R.id.auto_tv);
+        find_id_password_tv = (TextView)findViewById(R.id.find_id_password_tv);
+        question_tv = (TextView)findViewById(R.id.login_question_tv);
+        auto_check = (CheckBox)findViewById(R.id.auto_check_box);
         ////////////////////폰트적용////////////////////////////
-        setFontClass = new SetFontClass(getApplicationContext());
+        setFontClass = new SetFontClass(getAssets());
         login_id_edit.setTypeface(setFontClass.getNotoSansRegular());
         login_pw_edit.setTypeface(setFontClass.getNotoSansRegular());
-        login_btn.setTypeface(setFontClass.getNotoSansRegular());
         signup_btn.setTypeface(setFontClass.getNotoSansRegular());
+        auto_login_tv.setTypeface(setFontClass.getNotoSansRegular());
+        find_id_password_tv.setTypeface(setFontClass.getNotoSansRegular());
+        question_tv.setTypeface(setFontClass.getNotoSansRegular());
         signup_btn.setText(Html.fromHtml("<u>" + "회원가입" + "</u>"));
         ///////////////////클릭이벤트//////////////////////////
         login_btn.setOnClickListener(new View.OnClickListener() {
@@ -66,11 +82,10 @@ public class LoginActivity extends Activity {
                     Toast.makeText(getApplicationContext(), "비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                final String inputid = login_id_edit.getText().toString();
-
                 ///////서버 통신////////
-                String id = login_id_edit.getText().toString();
-                String password = login_pw_edit.getText().toString();
+                login_btn.setEnabled(false);
+                id = login_id_edit.getText().toString();
+                password = login_pw_edit.getText().toString();
                 LoginInfo loginInfo = new LoginInfo(id, password);
                 Call<LoginResult> requestLogin = service.tryLogin(loginInfo);
                 requestLogin.enqueue(new Callback<LoginResult>() {
@@ -80,10 +95,21 @@ public class LoginActivity extends Activity {
                             //////////로그인 성공////////////
                             ////////마이페이지 연동//////////
                             if (response.body().message.equals("ok")) {
-                                Intent intent = new Intent(LoginActivity.this, MainPageActivity.class);
-                                intent.putExtra("id", inputid.toString());
-                                intent.putExtra("user_num", response.body().result.user_num);
+                                if(auto_check.isChecked() == true)
+                                {
+                                    sf = getSharedPreferences("login_data", MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sf.edit();
+                                    editor.clear();
+                                    editor.putString("id", id.toString()); // 입력
+                                    editor.putString("password",password.toString()); // 입력
+                                    editor.commit(); // 파일에 최종 반영함
+                                }
+                                Intent intent = new Intent(LoginActivity.this, MainViewPagerActivity.class);
+                                intent.putExtra("id", id.toString());
+                                intent.putExtra("user_num", String.valueOf(response.body().result.user_num));
+                                Toast.makeText(getApplicationContext(), String.valueOf(response.body().result.user_num), Toast.LENGTH_SHORT).show();
                                 startActivity(intent);
+                                finish();
                             }
                         } else {
                             vibe.vibrate(1000);
@@ -98,6 +124,7 @@ public class LoginActivity extends Activity {
                         Log.i("myTag", t.toString());
                     }
                 });
+                login_btn.setEnabled(true);
             }
         });
         signup_btn.setOnClickListener(new View.OnClickListener() {

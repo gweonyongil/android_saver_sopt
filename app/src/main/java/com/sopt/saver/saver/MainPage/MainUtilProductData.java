@@ -5,9 +5,9 @@ package com.sopt.saver.saver.MainPage;
  */
 
 public class MainUtilProductData {
-    int util_num;
-    String period;
-    String kind;
-    String product;
-    String price;
+    public int util_num;
+    public String period;
+    public String kind;
+    public String product;
+    public String price;
 }

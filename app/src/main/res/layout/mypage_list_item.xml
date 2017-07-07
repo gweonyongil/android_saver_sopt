@@ -14,9 +14,9 @@
             android:layout_height="wrap_content"
             android:textSize="10dp"
             android:layout_marginLeft="22dp"
+            android:includeFontPadding="false"
             android:layout_weight="9"
-            android:id="@+id/mypage_item"
-            android:textColor="#000000"/>
+            android:id="@+id/mypage_item"/>
 
     </LinearLayout>
 

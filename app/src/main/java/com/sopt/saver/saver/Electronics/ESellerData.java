@@ -11,9 +11,11 @@ public class ESellerData {
     String price;
     String sellerid;
     String profileimage;
+    String addinformation;
     String local;
     String method;
     String period;
+    String user_num;
 
     public ESellerData(){
          sellerid = "test";

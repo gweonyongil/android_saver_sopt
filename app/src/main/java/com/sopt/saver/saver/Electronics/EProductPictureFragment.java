@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.sopt.saver.saver.R;
@@ -18,6 +19,7 @@ import com.sopt.saver.saver.R;
 
 public class EProductPictureFragment extends Fragment {
     private ImageView prod_img;
+    private TextView comment_tv;
     public EProductPictureFragment() {
         super();
     }
@@ -28,11 +30,19 @@ public class EProductPictureFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_productpicture, container, false);
         prod_img = (ImageView) view.findViewById(R.id.frag_prod_img);
-        if(getArguments().get("image") != null) {
-            Glide.with(context)
-                    .load(getArguments().get("image"))
-                    .into(prod_img);
+        comment_tv = (TextView) view.findViewById(R.id.frag_pict_item_image1_text);
+        try {
+            if (getArguments().get("image") != null) {
+                Glide.with(context)
+                        .load(getArguments().get("image"))
+                        .into(prod_img);
+            }
         }
+        catch (NullPointerException e)
+        {
+            e.printStackTrace();
+        }
+        comment_tv.setText(getArguments().get("count").toString());
         return view;
     }
 

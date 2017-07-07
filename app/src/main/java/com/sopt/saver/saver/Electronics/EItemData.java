@@ -4,7 +4,7 @@ package com.sopt.saver.saver.Electronics;
  * Created by kyi42 on 2017-04-15.
  */
 
-public class EItemData {
+public class EItemData{
     int elec_num;
     String id;
     String title;

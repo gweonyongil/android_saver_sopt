@@ -17,7 +17,7 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
  * Created by kyi42 on 2017-04-15.
  */
 
-public class ERecyclerAdapter extends RecyclerView.Adapter<EItemDataViewHolder> {
+public class ERecyclerAdapter extends RecyclerView.Adapter<ItemDataViewHolder> {
     private Context context;
     ArrayList<EItemData> electronics_itemDatas;
     View.OnClickListener clickListener;
@@ -33,16 +33,17 @@ public class ERecyclerAdapter extends RecyclerView.Adapter<EItemDataViewHolder> 
     }
 
     @Override
-    public EItemDataViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ItemDataViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.electronics_item_description, parent, false);
         view.setOnClickListener(clickListener);
-        EItemDataViewHolder EItemDataViewHolder = new EItemDataViewHolder(view);
-        return EItemDataViewHolder;
+        ItemDataViewHolder.setContext(context);
+        ItemDataViewHolder ItemDataViewHolder = new ItemDataViewHolder(view);
+        return ItemDataViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(EItemDataViewHolder holder, int position) {
+    public void onBindViewHolder(ItemDataViewHolder holder, int position) {
         if (electronics_itemDatas.get(position).product != null) {
             Glide.with(context)
                     .load(electronics_itemDatas.get(position).profileimage)

@@ -1,8 +1,11 @@
 package com.sopt.saver.saver.Message;
 
+import java.util.ArrayList;
+
 /**
- * Created by kyi42 on 2017-06-29.
+ * Created by hyowon on 2017. 5. 20..
  */
 
 public class MessageResult {
+    public ArrayList<MessageListData> results;
 }

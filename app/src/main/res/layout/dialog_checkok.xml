@@ -13,13 +13,16 @@
             android:text="(정보가격)IP를 지불하시고"
             android:textColor="#000000"
             android:gravity="center"
+            android:includeFontPadding="false"
             android:layout_centerInParent="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <TextView
+            android:id="@+id/dialog_ok_text2"
             android:text="해당 정보를 구매하시겠습니까?"
             android:textColor="#000000"
             android:gravity="center"
+            android:includeFontPadding="false"
             android:layout_below="@+id/dialog_ok_text1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -42,6 +45,7 @@
             android:text="네"
             android:textColor="#000000"
             android:background="@drawable/topcustomline"
+            android:includeFontPadding="false"
             android:layout_width="0dp"
             android:layout_weight="0.5"
             android:layout_height="50dp" />
@@ -50,6 +54,7 @@
             android:text="아니오"
             android:textColor="#000000"
             android:background="@drawable/topline"
+            android:includeFontPadding="false"
             android:layout_width="0dp"
             android:layout_weight="0.5"
             android:layout_height="50dp" />

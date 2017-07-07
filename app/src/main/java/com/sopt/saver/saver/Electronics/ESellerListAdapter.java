@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.sopt.saver.saver.API.SetFontClass;
 import com.sopt.saver.saver.R;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
  */
 
 public class ESellerListAdapter extends BaseAdapter {
+    String id;
     ArrayList<ESellerData> sellerDatas;
     View.OnClickListener onClickListener;
     Context context;
@@ -32,6 +34,11 @@ public class ESellerListAdapter extends BaseAdapter {
     public void setAdapter(ArrayList<ESellerData> sellerDatas) {
         this.sellerDatas = sellerDatas;
         notifyDataSetChanged();
+    }
+
+    public void setUserId(String id)
+    {
+        this.id = id;
     }
 
     @Override
@@ -51,7 +58,6 @@ public class ESellerListAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-
         context = parent.getContext();
         if(convertView == null)
         {
@@ -63,6 +69,8 @@ public class ESellerListAdapter extends BaseAdapter {
         TextView seller_title = (TextView)convertView.findViewById(R.id.electronics_seller_item_text1);
         TextView seller_product = (TextView)convertView.findViewById(R.id.electronics_seller_item_text2);
         TextView seller_price = (TextView)convertView.findViewById(R.id.electronics_seller_item_text3);
+        TextView seller_region = (TextView)convertView.findViewById(R.id.electronics_seller_item_text4);
+        TextView seller_add = (TextView)convertView.findViewById(R.id.electronics_seller_item_text5);
         Button seller_open_btn = (Button)convertView.findViewById(R.id.electronics_seller_open_btn);
         ////////////////뷰 설정/////////////////
         if(sellerDatas.get(position).profileimage != null) {
@@ -75,8 +83,22 @@ public class ESellerListAdapter extends BaseAdapter {
         seller_title.setText(sellerDatas.get(position).title);
         seller_product.setText(sellerDatas.get(position).product);
         seller_price.setText(sellerDatas.get(position).price);
+        seller_region.setText(sellerDatas.get(position).local);
+        seller_add.setText(sellerDatas.get(position).method);
+        if(id.equals(seller_userid.getText()))
+        {
+            //열람하기 수정하기로 변경
+            seller_open_btn.setBackgroundResource(R.drawable.detailpage_opentext2);
+        }
         seller_open_btn.setOnClickListener(onClickListener);
-
+        ///////////////////폰트 설정///////////////////////////
+        SetFontClass setFontClass = new SetFontClass(context.getAssets());
+        seller_userid.setTypeface(setFontClass.getNotoSansRegular());
+        seller_title.setTypeface(setFontClass.getNotoSansMedium());
+        seller_product.setTypeface(setFontClass.getNotoSansRegular());
+        seller_price.setTypeface(setFontClass.getNotoSansRegular());
+        seller_region.setTypeface(setFontClass.getNotoSansRegular());
+        seller_add.setTypeface(setFontClass.getNotoSansRegular());
         return convertView;
     }
 }

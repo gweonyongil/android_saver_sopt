@@ -14,6 +14,7 @@
             android:textColor="#000000"
             android:gravity="center"
             android:layout_above="@+id/dialog_fail_text2"
+            android:includeFontPadding="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <TextView
@@ -22,6 +23,7 @@
             android:textColor="#000000"
             android:gravity="center"
             android:layout_centerInParent="true"
+            android:includeFontPadding="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <TextView
@@ -30,6 +32,7 @@
             android:textColor="#000000"
             android:gravity="center"
             android:layout_below="@+id/dialog_fail_text2"
+            android:includeFontPadding="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <ImageView
@@ -50,6 +53,7 @@
             android:id="@+id/dialog_checkfail_ok_btn"
             android:text="작성글 쓰러가기"
             android:textColor="#000000"
+            android:includeFontPadding="false"
             android:background="@drawable/topline"
             android:layout_width="0dp"
             android:layout_weight="1"

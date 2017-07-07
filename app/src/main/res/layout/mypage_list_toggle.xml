@@ -12,10 +12,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#000000"
             android:textSize="10dp"
             android:layout_marginLeft="22dp"
             android:layout_weight="9"
+            android:includeFontPadding="false"
             android:id="@+id/mypage_tittle_t"/>
 
         <ToggleButton

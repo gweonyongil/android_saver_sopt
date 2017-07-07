@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -23,7 +24,7 @@
             android:layout_height="0dp"
             android:id="@+id/main_actionbar"
             android:layout_weight="0.1"
-            android:background="@drawable/mypage_navibarbg">
+            android:background="@drawable/category_navibarbg">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -39,12 +40,14 @@
                     android:layout_gravity="left|center_vertical"
                     android:background="@android:color/transparent"
                     android:layout_weight="0.1"
-                    android:id="@+id/write_main_btn" />
+                    android:id="@+id/write_back_btn" />
 
                 <TextView
+                    android:id="@+id/write_upper_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="작성하기"
+                    android:includeFontPadding="false"
                     android:textSize="20dp"
                     android:textColor="#323232"
                     android:gravity="center"
@@ -86,8 +89,10 @@
                     android:paddingTop="30dp">
 
                     <TextView
+                        android:id="@+id/write_title_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
                         android:text="제목 *"
                         android:textColor="#FB9726"
                         android:textSize="10dp" />
@@ -97,15 +102,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="제목을 입력해주세요"
+                        android:backgroundTint="@android:color/holo_blue_dark"
+                        android:textCursorDrawable="@android:color/holo_blue_dark"
+                        android:includeFontPadding="false"
                         android:textColor="#323232"
                         android:textColorHint="#323232"
                         android:textSize="18dp"/>
 
                     <!-- 카테고리 -->
                     <TextView
+                        android:id="@+id/write_cate_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="18dp"
+                        android:includeFontPadding="false"
                         android:text="카테고리 *"
                         android:textColor="#FB9726"
                         android:textSize="10dp" />
@@ -117,7 +127,7 @@
                         <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/greybox"
+                            android:src="@drawable/wrtiepage_electronics2"
                             android:layout_weight="1"
                             android:background="@android:color/transparent"
                             android:id="@+id/write_electronics_btn" />
@@ -125,7 +135,7 @@
                         <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/greybox"
+                            android:src="@drawable/writepage_ticket2"
                             android:background="@android:color/transparent"
                             android:layout_weight="1"
                             android:id="@+id/write_ticket_btn"/>
@@ -133,7 +143,7 @@
                         <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/greybox"
+                            android:src="@drawable/writepage_brand2"
                             android:layout_weight="1"
                             android:background="@android:color/transparent"
                             android:id="@+id/write_brand_btn"/>
@@ -142,14 +152,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
-                            android:src="@drawable/greybox"
+                            android:src="@drawable/writepage_smartphone2"
                             android:layout_weight="1"
                             android:id="@+id/write_smartphone_btn"/>
 
                         <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/greybox"
+                            android:src="@drawable/writepage_guita2"
                             android:background="@android:color/transparent"
                             android:layout_weight="1"
                             android:id="@+id/write_etc_btn"/>
@@ -168,22 +178,27 @@
                         android:layout_weight="0.45">
 
                         <TextView
+                            android:id="@+id/write_kind_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
                             android:text="품종 *"
                             android:textSize="10dp"
                             android:textColor="#FB9726"/>
 
-                        <EditText
-                            android:id="@+id/write_kind_et"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="품종을 입력해주세요"
-                            android:textColor="#323232"
-                            android:textColorHint="#323232"
-                            android:textSize="13dp" />
+                            <EditText
+                                android:id="@+id/write_kind_et"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="@android:color/holo_blue_dark"
+                                android:hint="품종을 입력해주세요"
+                                android:includeFontPadding="false"
+                                android:textColor="#323232"
+                                android:textColorHint="#323232"
+                                android:textCursorDrawable="@android:color/holo_blue_dark"
+                                android:textSize="13dp" />
 
-                    </LinearLayout>
+                        </LinearLayout>
 
                         <TextView
                             android:layout_width="0dp"
@@ -197,8 +212,10 @@
                             android:layout_weight="0.45">
 
                             <TextView
+                                android:id="@+id/write_prod_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
                                 android:text="상품 *"
                                 android:textSize="10dp"
                                 android:textColor="#FB9726"/>
@@ -207,8 +224,11 @@
                                 android:id="@+id/write_product_et"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:includeFontPadding="false"
                                 android:hint="상품을 입력해주세요"
                                 android:textColor="#323232"
+                                android:backgroundTint="@android:color/holo_blue_dark"
+                                android:textCursorDrawable="@android:color/holo_blue_dark"
                                 android:textColorHint="#323232"
                                 android:textSize="13dp" />
 
@@ -216,8 +236,10 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/write_price_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
                         android:text="찾은가격"
                         android:textSize="10dp"
                         android:textColor="#FB9726"
@@ -228,14 +250,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="가격을 입력해주세요"
+                        android:backgroundTint="@android:color/holo_blue_dark"
+                        android:textCursorDrawable="@android:color/holo_blue_dark"
+                        android:includeFontPadding="false"
                         android:textColor="#323232"
                         android:textColorHint="#323232"
                         android:textSize="13dp" />
 
                     <TextView
+                        android:id="@+id/write_url_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="URL"
+                        android:includeFontPadding="false"
                         android:textSize="10dp"
                         android:textColor="#FB9726"
                         android:layout_marginTop="20dp"/>
@@ -245,14 +272,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="URL을 입력해주세요"
+                        android:includeFontPadding="false"
                         android:textColor="#323232"
+                        android:backgroundTint="@android:color/holo_blue_dark"
+                        android:textCursorDrawable="@android:color/holo_blue_dark"
                         android:textColorHint="#323232"
                         android:textSize="13dp" />
 
 
                     <TextView
+                        android:id="@+id/write_day_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
                         android:text="기한"
                         android:textSize="10dp"
                         android:textColor="#FB9726"
@@ -268,8 +300,10 @@
                         android:theme="@android:style/Theme.Holo.Light"></DatePicker>
 
                     <TextView
+                        android:id="@+id/write_sub_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
                         android:text="요구사항"
                         android:textSize="10dp"
                         android:textColor="#FB9726"
@@ -279,22 +313,47 @@
                         android:id="@+id/write_want_et"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:includeFontPadding="false"
+                        android:textColor="#323232"
+                        android:backgroundTint="@android:color/holo_blue_dark"
+                        android:textCursorDrawable="@android:color/holo_blue_dark"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/write_add_info_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        android:text="추가정보"
+                        android:textSize="10dp"
+                        android:textColor="#FB9726"
+                        android:layout_marginTop="20dp"/>
+
+                    <EditText
+                        android:id="@+id/write_add_info_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:includeFontPadding="false"
+                        android:backgroundTint="@android:color/holo_blue_dark"
+                        android:textCursorDrawable="@android:color/holo_blue_dark"
                         android:textColor="#323232"
                         android:textSize="13dp" />
 
 
                     <TextView
+                        android:id="@+id/write_image_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
                         android:text="이미지 추가"
                         android:textSize="10dp"
                         android:textColor="#FB9726"
                         android:layout_marginTop="20dp"/>
 
-                    <ImageButton
-                        android:id="@+id/image_add_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <ImageView
+                        android:id="@+id/image_add_img"
+                        android:layout_width="200dp"
+                        android:layout_height="130dp"
                         android:src="@drawable/writepage_imageinput"
                         android:background="@android:color/transparent"
                         android:layout_gravity="center_horizontal"

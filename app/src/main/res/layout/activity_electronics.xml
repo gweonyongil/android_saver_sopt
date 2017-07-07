@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.sopt.saver.saver.Electronics.ERecyclerViewActivity"
+    tools:context="com.sopt.saver.saver.Electronics.ERecyclerListActivity"
     android:background="#fafafa"
     android:weightSum="1">
 
@@ -35,6 +35,7 @@
             android:layout_marginRight="60dp"
             android:layout_marginTop="10dp"
             android:layout_centerInParent="true"
+            android:includeFontPadding="false"
             android:text="전자제품"
             android:textColor="#000000"
             android:textColorHint="#000000" />
@@ -43,6 +44,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:includeFontPadding="false"
             android:layout_marginRight="100dp"
             android:layout_marginLeft="80dp"
             android:layout_marginTop="10dp"
